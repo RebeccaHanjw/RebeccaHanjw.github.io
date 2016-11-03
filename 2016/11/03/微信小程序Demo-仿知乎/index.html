@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://yoursite.com/images/notify.png">
 <meta property="og:image" content="http://yoursite.com/images/loading.png">
 <meta property="og:image" content="http://yoursite.com/images/322675.jpg">
-<meta property="og:updated_time" content="2016-11-03T05:34:40.000Z">
+<meta property="og:updated_time" content="2016-11-03T06:30:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序Demo--仿知乎">
 <meta name="twitter:description" content="从微信小程序开始内测到现在, 已经一个月过去了,终于把我自己的微信小程序 demo 墨迹完成了. 真的是墨迹完的, 连我自己都佩服自己的拖延症了(懒癌少女已弃疗ヾ(´A｀)ノﾟ), 总之算是基本完成了(明明有很多组件啊 API 啊根本都没用好嘛 →_→) 以及从来不写 blog 的我也出来码字啦 (ﾉ◕ヮ◕)ﾉ:･ﾟ✧
@@ -71,9 +71,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -117,18 +117,22 @@
 </li>
 <li><p><em>数据</em>: 毕竟是知乎, 为了防止版权问题, fake 的数据使用的是我自己的回答, 所以…</p>
 </li>
-<li><p><em>项目地址</em>: <a href="https://github.com/RebeccaHanjw/weapp-wechat-zhihu" target="_blank" rel="external">https://github.com/RebeccaHanjw/weapp-wechat-zhihu</a></p>
-</li>
+<li><em>项目地址</em>: <a href="https://github.com/RebeccaHanjw/weapp-wechat-zhihu" target="_blank" rel="external">https://github.com/RebeccaHanjw/weapp-wechat-zhihu</a></li>
 </ul>
 <h2 id="–"><a href="#–" class="headerlink" title="–"></a>–</h2><h4 id="1-基础文件"><a href="#1-基础文件" class="headerlink" title="1.  基础文件"></a>1.  基础文件</h4><p>app.json:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;pages&quot;:[</div><div class="line">    &quot;pages/index/index&quot;,</div><div class="line">    &quot;pages/discovery/discovery&quot;,</div><div class="line">    &quot;pages/notify/notify&quot;,</div><div class="line">    &quot;pages/chat/chat&quot;,</div><div class="line">    &quot;pages/more/more&quot;,</div><div class="line">    &quot;pages/answer/answer&quot;,</div><div class="line">    &quot;pages/question/question&quot;</div><div class="line">  ],</div><div class="line">  &quot;window&quot;:&#123;</div><div class="line">    &quot;backgroundTextStyle&quot;:&quot;light&quot;,</div><div class="line">    &quot;navigationBarBackgroundColor&quot;: &quot;#0068C4&quot;,</div><div class="line">    &quot;navigationBarTitleText&quot;: &quot;知乎&quot;,</div><div class="line">    &quot;navigationBarTextStyle&quot;:&quot;white&quot;,</div><div class="line">    &quot;enablePullDownRefresh&quot;:true</div><div class="line">  &#125;,</div><div class="line">  &quot;tabBar&quot;: &#123;</div><div class="line">    &quot;color&quot;: &quot;#626567&quot;,</div><div class="line">    &quot;selectedColor&quot;: &quot;#2A8CE5&quot;,</div><div class="line">    &quot;backgroundColor&quot;: &quot;#FBFBFB&quot;,</div><div class="line">    &quot;borderStyle&quot;: &quot;white&quot;,</div><div class="line">    &quot;list&quot;: [&#123;</div><div class="line">      &quot;pagePath&quot;: &quot;pages/index/index&quot;,</div><div class="line">      &quot;text&quot;: &quot;&quot;,</div><div class="line">      &quot;iconPath&quot;: &quot;images/index.png&quot;,</div><div class="line">      &quot;selectedIconPath&quot;: &quot;images/index_focus.png&quot;</div><div class="line">    &#125;, &#123;</div><div class="line">      &quot;pagePath&quot;: &quot;pages/discovery/discovery&quot;,</div><div class="line">      &quot;text&quot;: &quot;&quot;,</div><div class="line">      &quot;iconPath&quot;: &quot;images/discovery.png&quot;,</div><div class="line">      &quot;selectedIconPath&quot;: &quot;images/discovery_focus.png&quot;</div><div class="line">    &#125;, &#123;</div><div class="line">      &quot;pagePath&quot;: &quot;pages/notify/notify&quot;,</div><div class="line">      &quot;text&quot;: &quot;&quot;,</div><div class="line">      &quot;iconPath&quot;: &quot;images/ring.png&quot;,</div><div class="line">      &quot;selectedIconPath&quot;: &quot;images/ring_focus.png&quot;</div><div class="line">    &#125;, &#123;</div><div class="line">      &quot;pagePath&quot;: &quot;pages/chat/chat&quot;,</div><div class="line">      &quot;text&quot;: &quot;&quot;,</div><div class="line">      &quot;iconPath&quot;: &quot;images/chat.png&quot;,</div><div class="line">      &quot;selectedIconPath&quot;: &quot;images/chat_focus.png&quot;</div><div class="line">    &#125;, &#123;</div><div class="line">      &quot;pagePath&quot;: &quot;pages/more/more&quot;,</div><div class="line">      &quot;text&quot;: &quot;&quot;,</div><div class="line">      &quot;iconPath&quot;: &quot;images/burger.png&quot;,</div><div class="line">      &quot;selectedIconPath&quot;: &quot;images/burger_focus.png&quot;</div><div class="line">    &#125;]</div><div class="line">  &#125;,</div><div class="line">  &quot;networkTimeout&quot;: &#123;</div><div class="line">    &quot;request&quot;: 10000,</div><div class="line">    &quot;downloadFile&quot;: 10000</div><div class="line">  &#125;,</div><div class="line">  &quot;debug&quot;: true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>app.json文件中是对整个小程序的全局配置, 主要用到的字段有pages, window, tabBar, networkTimeout.</p>
 <ul>
-<li>pages 字段:  所有小程序的页面都要在该字段中注册, 该字段数组中的第一个page 默认为小程序首页(设置tab 除外), 没有在 pages 字段注册过的页面貌似不能够进行有效的编译(之前版本的编辑器可以,只是会影响配置文件等的生效, 编辑器更新后会报未注册的错误).</li>
-<li>window 字段:  大多是关于小程序顶部 navigationbar 的一些设置</li>
-<li>tabBar字段: 如果你需要首页面底部带tabbar的样式, 那么就在 tabBar 字段中设置每个 tab 对应的页面, 按顺序对应左至右, 包括路径, tab 文字, tab图标和选中状态图标.</li>
-<li>netwoTimeout: 设置网络超时时间.</li>
-<li>debug: 开启 debug 模式.</li>
+<li><p>pages 字段:  所有小程序的页面都要在该字段中注册, 该字段数组中的第一个page 默认为小程序首页(设置tab 除外), 没有在 pages 字段注册过的页面貌似不能够进行有效的编译(之前版本的编辑器可以,只是会影响配置文件等的生效, 编辑器更新后会报未注册的错误).</p>
+</li>
+<li><p>window 字段:  大多是关于小程序顶部 navigationbar 的一些设置</p>
+</li>
+<li><p>tabBar字段: 如果你需要首页面底部带tabbar的样式, 那么就在 tabBar 字段中设置每个 tab 对应的页面, 按顺序对应左至右, 包括路径, tab 文字, tab图标和选中状态图标.</p>
+</li>
+<li><p>netwoTimeout: 设置网络超时时间.</p>
+</li>
+<li><p>debug: 开启 debug 模式.</p>
+</li>
 </ul>
 <p>–<br>app.wxss 文件中为全局样式, 也就是说这个文件中的样式在所有的 page 中均可使用, 若其他页面文件的 wxss 中定义了与该样式文件中相同的属性, 则该文件中的样式被覆盖, 规则与 css 优先规则大致相通.</p>
 <p>–<br>app.js: 调用 login接口, 回调, 周期函数, 本地存储等等逻辑代码.</p>
@@ -198,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/03/微信小程序Demo-仿知乎/" data-id="civ1x3yua00007n936ryy9jyq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/11/03/微信小程序Demo-仿知乎/" data-id="civ26jlmv00001693mb49s64n" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -232,7 +236,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -253,7 +257,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 Rebecca Han<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
