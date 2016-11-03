@@ -52,9 +52,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -87,7 +87,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="media/wechat.jpg" alt="wechat"></p>
+        <p><img src="images/wechat.jpg" alt="wechat"></p>
 <p><em>从微信小程序开始内测到现在, 已经一个月过去了,终于把我自己的微信小程序 demo 墨迹完成了. 真的是墨迹完的, 连我自己都佩服自己的拖延症了(懒癌少女已弃疗</em>ヾ(´A｀)ノﾟ<em>), 总之算是基本完成了(明明有很多组件啊 API 啊根本都没用好嘛 →_→) 以及从来不写 blog 的我也出来码字啦</em> (ﾉ◕ヮ◕)ﾉ:･ﾟ✧</p>
 <p>-</p>
 <p>######之前有很长一段时间我算是知乎重度依赖, 所以这次 demo 的模仿对象选择的是知乎(但是写到一半发现我这个决定坑了, 这是后话).</p>
@@ -115,7 +115,7 @@
 </ul>
 <p>–<br>app.wxss 文件中为全局样式, 也就是说这个文件中的样式在所有的 page 中均可使用, 若其他页面文件的 wxss 中定义了与该样式文件中相同的属性, 则该文件中的样式被覆盖, 规则与 css 优先规则大致相通.</p>
 <p>–<br>app.js: 调用 login接口, 回调, 周期函数, 本地存储等等逻辑代码.</p>
-<h2 id="–-1"><a href="#–-1" class="headerlink" title="–"></a>–</h2><h4 id="2-页面文件"><a href="#2-页面文件" class="headerlink" title="2. 页面文件:"></a>2. 页面文件:</h4><p><img src="media/struct.png" alt="struct"></p>
+<h2 id="–-1"><a href="#–-1" class="headerlink" title="–"></a>–</h2><h4 id="2-页面文件"><a href="#2-页面文件" class="headerlink" title="2. 页面文件:"></a>2. 页面文件:</h4><p><img src="images/struct.png" alt="struct"></p>
 <p>页面文件由四部分组成<br>例如我们有一个首页叫做 index, 则需要在 pages 文件夹下创建文件名相通的三个必要文件:</p>
 <ul>
 <li>index.wxml</li>
@@ -136,7 +136,7 @@
 </ol>
 <p>( 待续… … )</p>
 <h2 id="–-3"><a href="#–-3" class="headerlink" title="–"></a>–</h2><p>–</p>
-<h6 id="后面将对于一些我-demo-中写到用到的部分进行说明"><a href="#后面将对于一些我-demo-中写到用到的部分进行说明" class="headerlink" title="后面将对于一些我 demo 中写到用到的部分进行说明"></a>后面将对于一些我 demo 中写到用到的部分进行说明</h6><h3 id="列表式的数据渲染"><a href="#列表式的数据渲染" class="headerlink" title="列表式的数据渲染"></a>列表式的数据渲染</h3><p>首页<br><img src="media/index.png" alt="index"></p>
+<h6 id="后面将对于一些我-demo-中写到用到的部分进行说明"><a href="#后面将对于一些我-demo-中写到用到的部分进行说明" class="headerlink" title="后面将对于一些我 demo 中写到用到的部分进行说明"></a>后面将对于一些我 demo 中写到用到的部分进行说明</h6><h3 id="列表式的数据渲染"><a href="#列表式的数据渲染" class="headerlink" title="列表式的数据渲染"></a>列表式的数据渲染</h3><p>首页<br><img src="images/index.png" alt="index"></p>
 <p>类似于首页以及发现页这种标准列表式的数据展现方式, 微信提供了很好的方案—列表渲染</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;block wx:for=&quot;&#123; &#123;feed&#125;&#125;&quot; wx:for-index=&quot;idx&quot; wx:for-item=&quot;item&quot; data-idx=&quot;&#123; &#123;idx&#125;&#125;&quot;&gt;</div><div class="line">   &lt;view class=&quot;feed-item&quot;&gt;</div><div class="line">       &lt;view class=&quot;feed-source&quot;&gt;</div><div class="line">           &lt;a class=&quot;&quot;&gt;</div><div class="line">               &lt;view class=&quot;avatar&quot;&gt;</div><div class="line">                   &lt;image src=&quot;&#123; &#123;item.feed_source_img&#125;&#125;&quot;&gt;&lt;/image&gt;</div><div class="line">               &lt;/view&gt;</div><div class="line">               &lt;text&gt;&#123; &#123;item.feed_source_name&#125;&#125;&#123; &#123;item.feed_source_txt&#125;&#125;&lt;/text&gt;</div><div class="line">           &lt;/a&gt;</div><div class="line">           &lt;image class=&quot;item-more&quot; mode=&quot;aspectFit&quot; src=&quot;../../images/more.png&quot;&gt;&lt;/image&gt;</div><div class="line">       &lt;/view&gt;</div><div class="line">       &lt;view class=&quot;feed-content&quot;&gt;</div><div class="line">           &lt;view class=&quot;question&quot; qid=&quot;&#123; &#123;question_id&#125;&#125;&quot; bindtap=&quot;bindQueTap&quot;&gt;</div><div class="line">               &lt;a class=&quot;question-link&quot;&gt;</div><div class="line">                   &lt;text&gt;&#123; &#123;item.question&#125;&#125;&lt;/text&gt;</div><div class="line">               &lt;/a&gt;</div><div class="line">           &lt;/view&gt;</div><div class="line">           &lt;view class=&quot;answer-body&quot;&gt;</div><div class="line">               &lt;view bindtap=&quot;bindItemTap&quot;&gt;</div><div class="line">                   &lt;text class=&quot;answer-txt&quot; aid=&quot;&#123; &#123;answer_id&#125;&#125;&quot;&gt;&#123; &#123;item.answer_ctnt&#125;&#125;&lt;/text&gt;</div><div class="line">               &lt;/view&gt;</div><div class="line">               &lt;view class=&quot;answer-actions&quot; bindtap=&quot;bindItemTap&quot;&gt;</div><div class="line">                   &lt;view class=&quot;like dot&quot;&gt;</div><div class="line">                       &lt;a&gt;&#123; &#123;item.good_num&#125;&#125; 赞同 &lt;/a&gt;</div><div class="line">                   &lt;/view&gt;</div><div class="line">                   &lt;view class=&quot;comments dot&quot;&gt;</div><div class="line">                       &lt;a&gt;&#123; &#123;item.comment_num&#125;&#125; 评论 &lt;/a&gt;</div><div class="line">                   &lt;/view&gt;</div><div class="line">                   &lt;view class=&quot;follow-it&quot;&gt;</div><div class="line">                       &lt;a&gt;关注问题&lt;/a&gt;</div><div class="line">                   &lt;/view&gt;</div><div class="line">               &lt;/view&gt;</div><div class="line">           &lt;/view&gt;</div><div class="line">       &lt;/view&gt;</div><div class="line">   &lt;/view&gt;</div><div class="line">&lt;/block&gt;</div></pre></td></tr></table></figure>
 <p>可以直观的看出, 就是 for 循环来用重复的结构渲染一组数据</p>
@@ -145,8 +145,8 @@
 <li>for-item 指定数组中当前元素的变量名</li>
 <li>for-index 指定数组中当前元素下标变量名</li>
 </ul>
-<h6 id="同样也使用了-for-渲染的还有顶部的发现页和通知页等顶部的自定义-tabbar"><a href="#同样也使用了-for-渲染的还有顶部的发现页和通知页等顶部的自定义-tabbar" class="headerlink" title="同样也使用了 for 渲染的还有顶部的发现页和通知页等顶部的自定义 tabbar"></a>同样也使用了 for 渲染的还有顶部的发现页和通知页等顶部的自定义 tabbar</h6><h3 id="顶部-tabbar-实现"><a href="#顶部-tabbar-实现" class="headerlink" title="顶部 tabbar 实现"></a>顶部 tabbar 实现</h3><p><img src="media/discovery1.png" alt="discovery1"></p>
-<p><img src="media/discovery2.png" alt="discovery2"></p>
+<h6 id="同样也使用了-for-渲染的还有顶部的发现页和通知页等顶部的自定义-tabbar"><a href="#同样也使用了-for-渲染的还有顶部的发现页和通知页等顶部的自定义-tabbar" class="headerlink" title="同样也使用了 for 渲染的还有顶部的发现页和通知页等顶部的自定义 tabbar"></a>同样也使用了 for 渲染的还有顶部的发现页和通知页等顶部的自定义 tabbar</h6><h3 id="顶部-tabbar-实现"><a href="#顶部-tabbar-实现" class="headerlink" title="顶部 tabbar 实现"></a>顶部 tabbar 实现</h3><p><img src="images/discovery1.png" alt="discovery1"></p>
+<p><img src="images/discovery2.png" alt="discovery2"></p>
 <p>微信只提供了底部 tabbar, 所以顶部的要自己写喽~<br>顶部 tabbar 的实现在于 for 列表渲染以及 js 配合<br>wxml:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;view class=&quot;top-tab flex-wrp flex-tab &quot; &gt;</div><div class="line">  &lt;view class=&quot;toptab flex-item &#123; &#123;currentNavtab==idx ? &apos;active&apos; : &apos;&apos;&#125;&#125;&quot; wx:for=&quot;&#123; &#123;navTab&#125;&#125;&quot; wx:for-index=&quot;idx&quot; wx:for-item=&quot;itemName&quot; data-idx=&quot;&#123; &#123;idx&#125;&#125;&quot; bindtap=&quot;switchTab&quot;&gt;</div><div class="line">    &#123; &#123;itemName&#125;&#125;</div><div class="line">  &lt;/view&gt;</div><div class="line">&lt;/view&gt;</div><div class="line">&lt;scroll-view scroll-y=&quot;true&quot; class=&quot;container discovery withtab&quot; bindscrolltoupper=&quot;upper&quot; bindscrolltolower=&quot;lower&quot;  scroll-into-view=&quot;&#123; &#123;toView&#125;&#125;&quot; scroll-top=&quot;&#123; &#123;scrollTop&#125;&#125;&quot;&gt;</div><div class="line">  &lt;view class=&quot;ctnt0&quot; hidden=&quot;&#123; &#123;currentNavtab==0 ? &apos;&apos; : true&#125;&#125;&quot;&gt;</div><div class="line">  &lt;/view&gt;</div><div class="line">  &lt;view class=&quot;ctnt1 placehold&quot; hidden=&quot;&#123; &#123;currentNavtab==1 ? &apos;&apos; : true&#125;&#125;&quot;&gt;</div><div class="line">    &lt;text&gt;圆桌&lt;/text&gt;</div><div class="line">  &lt;/view&gt;</div><div class="line">  &lt;view class=&quot;ctnt2 placehold&quot; hidden=&quot;&#123; &#123;currentNavtab==2 ? &apos;&apos; : true&#125;&#125;&quot;&gt;</div><div class="line">    &lt;text&gt;热门&lt;/text&gt;</div><div class="line">  &lt;/view&gt;</div><div class="line">  &lt;view class=&quot;ctnt3 placehold&quot; hidden=&quot;&#123; &#123;currentNavtab==3 ? &apos;&apos; : true&#125;&#125;&quot;&gt;</div><div class="line">    &lt;text&gt;收藏&lt;/text&gt;</div><div class="line">  &lt;/view&gt;</div><div class="line">&lt;/scroll-view&gt;</div></pre></td></tr></table></figure>
 <p>js:</p>
@@ -164,7 +164,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">upper: function () &#123;</div><div class="line">    wx.showNavigationBarLoading()</div><div class="line">    this.refresh();</div><div class="line">    console.log(&quot;upper&quot;);</div><div class="line">    setTimeout(function()&#123;wx.hideNavigationBarLoading();wx.stopPullDownRefresh();&#125;, 2000);</div><div class="line">  &#125;,</div><div class="line">  lower: function (e) &#123;</div><div class="line">    wx.showNavigationBarLoading();</div><div class="line">    var that = this;</div><div class="line">    setTimeout(function()&#123;wx.hideNavigationBarLoading();that.nextLoad();&#125;, 1000);</div><div class="line">    console.log(&quot;lower&quot;)</div><div class="line">  &#125;,</div><div class="line">  //scroll: function (e) &#123;</div><div class="line">  //  console.log(&quot;scroll&quot;)</div><div class="line">  //&#125;,</div><div class="line"></div><div class="line">  //网络请求数据, 实现刷新</div><div class="line">  refresh0: function()&#123;</div><div class="line">    var index_api = &apos;&apos;;</div><div class="line">    util.getData(index_api)</div><div class="line">        .then(function(data)&#123;</div><div class="line">          //this.setData(&#123;</div><div class="line">          //</div><div class="line">          //&#125;);</div><div class="line">          console.log(data);</div><div class="line">        &#125;);</div><div class="line">  &#125;,</div><div class="line">  //使用本地 fake 数据实现刷新效果</div><div class="line">  refresh: function()&#123;</div><div class="line">    var feed = util.getDiscovery();</div><div class="line">    console.log(&quot;loaddata&quot;);</div><div class="line">    var feed_data = feed.data;</div><div class="line">    this.setData(&#123;</div><div class="line">      feed:feed_data,</div><div class="line">      feed_length: feed_data.length</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  //使用本地 fake 数据实现继续加载效果</div><div class="line">  nextLoad: function()&#123;</div><div class="line">    var next = util.discoveryNext();</div><div class="line">    console.log(&quot;continueload&quot;);</div><div class="line">    var next_data = next.data;</div><div class="line">    this.setData(&#123;</div><div class="line">      feed: this.data.feed.concat(next_data),</div><div class="line">      feed_length: this.data.feed_length + next_data.length</div><div class="line">    &#125;);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p>由于是 fake 的数据, 所以这个 demo 并没有做真实的带参跳转, 查询等功能</p>
 <p>加载数据的同时, 使用微信提供的加载动画wx.showNavigationBarLoading();</p>
-<p><img src="media/loading.png" alt="loading"></p>
+<p><img src="images/loading.png" alt="loading"></p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
 <li>绑定点击事件, 进行页面的跳转wx.navigateTo</li>
 <li>部分模块化</li>
@@ -173,12 +173,12 @@
 <h3 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h3><p>其实还有大量的组件和 API 还没有用过, 这个 demo 也许后续还会有更新呦, 这取决于懒癌少女的病情严重程度了</p>
 <h3 id="也许算是些感受"><a href="#也许算是些感受" class="headerlink" title="也许算是些感受?"></a>也许算是些感受?</h3><p>其实作为一个小前端, 由于工作中的原因, 使用 MVVM 其实非常少的, 不过写了这个微信小程序 demo 之后, 更加把这方便的思维理顺了. 当然, 写完之后回头看, 还是有超多的不足, 明明好些地方能再换一种写法的. 不过毕竟是我第一次尝试用新鲜热乎的东西写小 demo, 也是第一次尝试写教程…或者算是记录? whatever~~</p>
 <p>还有, 非项目的配图均来自网络哦~~</p>
-<h5 id="Anyway-希望除了写代码之外-还能在码文字的道路上也多走走吧-毕竟我是要做代码小仙女的人呀-≧∀≦-ゞ"><a href="#Anyway-希望除了写代码之外-还能在码文字的道路上也多走走吧-毕竟我是要做代码小仙女的人呀-≧∀≦-ゞ" class="headerlink" title="Anyway~ 希望除了写代码之外, 还能在码文字的道路上也多走走吧, 毕竟我是要做代码小仙女的人呀(≧∀≦)ゞ"></a>Anyway~ 希望除了写代码之外, 还能在码文字的道路上也多走走吧, 毕竟我是要做代码小仙女的人呀(≧∀≦)ゞ</h5><p><img src="media/322675.jpg" alt="322675"></p>
+<h5 id="Anyway-希望除了写代码之外-还能在码文字的道路上也多走走吧-毕竟我是要做代码小仙女的人呀-≧∀≦-ゞ"><a href="#Anyway-希望除了写代码之外-还能在码文字的道路上也多走走吧-毕竟我是要做代码小仙女的人呀-≧∀≦-ゞ" class="headerlink" title="Anyway~ 希望除了写代码之外, 还能在码文字的道路上也多走走吧, 毕竟我是要做代码小仙女的人呀(≧∀≦)ゞ"></a>Anyway~ 希望除了写代码之外, 还能在码文字的道路上也多走走吧, 毕竟我是要做代码小仙女的人呀(≧∀≦)ゞ</h5><p><img src="images/322675.jpg" alt="322675"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/03/微信小程序Demo-仿知乎/" data-id="civ1t65jn0000yr93bqmjmscx" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/11/03/微信小程序Demo-仿知乎/" data-id="civ1vbqni00003i935n3oicul" class="article-share-link">Share</a>
       
       
     </footer>
@@ -213,7 +213,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -234,7 +234,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 Rebecca Han<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
