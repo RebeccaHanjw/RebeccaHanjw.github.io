@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Alfred 平台的知乎搜索 workflow | PETRICHOR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Alfred workflow – 知乎搜索听说 Mac 平台上流行用 Alfred 代替 spotlight, 我平常的使用是结合 Dash 居多, 再就是各种 workflow 了.
+网络上基于 JavaScript 开发的 workflow 不多, 作为前端, js 是主力, 所以写了这个知乎搜索的 workflow.
+Basics开发基于 JavaScript, node,  cheeri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Alfred 平台的知乎搜索 workflow">
+<meta property="og:url" content="http://yoursite.com/2017/04/06/Alfred-平台的知乎搜索-workflow/index.html">
+<meta property="og:site_name" content="PETRICHOR">
+<meta property="og:description" content="Alfred workflow – 知乎搜索听说 Mac 平台上流行用 Alfred 代替 spotlight, 我平常的使用是结合 Dash 居多, 再就是各种 workflow 了.
+网络上基于 JavaScript 开发的 workflow 不多, 作为前端, js 是主力, 所以写了这个知乎搜索的 workflow.
+Basics开发基于 JavaScript, node,  cheeri">
+<meta property="og:image" content="http://yoursite.com/images/zhihu_search1.png">
+<meta property="og:image" content="http://yoursite.com/images/zhihu_search2.png">
+<meta property="og:updated_time" content="2017-04-06T07:21:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Alfred 平台的知乎搜索 workflow">
+<meta name="twitter:description" content="Alfred workflow – 知乎搜索听说 Mac 平台上流行用 Alfred 代替 spotlight, 我平常的使用是结合 Dash 居多, 再就是各种 workflow 了.
+网络上基于 JavaScript 开发的 workflow 不多, 作为前端, js 是主力, 所以写了这个知乎搜索的 workflow.
+Basics开发基于 JavaScript, node,  cheeri">
+<meta name="twitter:image" content="http://yoursite.com/images/zhihu_search1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="PETRICHOR" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">PETRICHOR</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A Girl &amp; A Luftmensch</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Alfred-平台的知乎搜索-workflow" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/06/Alfred-平台的知乎搜索-workflow/" class="article-date">
+  <time datetime="2017-04-06T06:59:46.000Z" itemprop="datePublished">2017-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Alfred 平台的知乎搜索 workflow
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Alfred-workflow-–-知乎搜索"><a href="#Alfred-workflow-–-知乎搜索" class="headerlink" title="Alfred workflow – 知乎搜索"></a>Alfred workflow – 知乎搜索</h1><p>听说 Mac 平台上流行用 Alfred 代替 spotlight, 我平常的使用是结合 Dash 居多, 再就是各种 workflow 了.</p>
+<p>网络上基于 JavaScript 开发的 workflow 不多, 作为前端, js 是主力, 所以写了这个知乎搜索的 workflow.</p>
+<h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><p>开发基于 <code>JavaScript</code>, <code>node</code>,  <code>cheerio</code>, <code>知乎搜索</code><br>使用平台: <code>Alfred</code></p>
+<p>使用: 下载 .alfredworkflow 文件, 双击运行</p>
+<p>response 的解析依赖于开源的 <a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">cheerio</a><br>知乎没有开放的 api, 所以 workflow 的结果来源于未登录也能使用的 /search, 其结果是未经过解析的页面文件, 使用开源项目 cheerio 进行解析.</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>使用 Alfred 基于关键词快捷搜索知乎平台上的问题及回答</p>
+<p>触发 keyword: <code>zh</code></p>
+<p>列表 title 为每一条结果的 title</p>
+<p>列表 subtitle 为每一条结果的 author&amp;summary 拼接</p>
+<h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><p><img src="/images/zhihu_search1.png" alt="zhihu_search1"><br><img src="/images/zhihu_search2.png" alt="zhihu_search2"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/06/Alfred-平台的知乎搜索-workflow/" data-id="cj162su3t0001vd93116sctt7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/08/并列 inline-block 元素间隙问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">并列 inline-block 元素间隙问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/06/Alfred-平台的知乎搜索-workflow/">Alfred 平台的知乎搜索 workflow</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/08/并列 inline-block 元素间隙问题/">并列 inline-block 元素间隙问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/23/JS 自定义事件/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/03/微信小程序Demo-仿知乎/">微信小程序Demo--仿知乎</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Rebecca Han<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"> </script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
