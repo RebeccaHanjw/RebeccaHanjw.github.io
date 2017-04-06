@@ -7,25 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="听说 Mac 平台上流行用 Alfred 代替 spotlight, 我平常的使用是结合 Dash 居多, 再就是各种 workflow 了.
 网络上基于 JavaScript 开发的 workflow 不多, 作为前端, js 是主力, 所以写了这个知乎搜索的 workflow.
-Basics开发基于 JavaScript, node,  cheerio, 知乎搜索使用平台: Alfred
-使用">
+项目地址: github.com/RebeccaHanjw/zhihu_search_alfred_workflow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Alfred 平台的知乎搜索 workflow">
 <meta property="og:url" content="http://yoursite.com/2017/04/06/Alfred-平台的知乎搜索-workflow/index.html">
 <meta property="og:site_name" content="PETRICHOR">
 <meta property="og:description" content="听说 Mac 平台上流行用 Alfred 代替 spotlight, 我平常的使用是结合 Dash 居多, 再就是各种 workflow 了.
 网络上基于 JavaScript 开发的 workflow 不多, 作为前端, js 是主力, 所以写了这个知乎搜索的 workflow.
-Basics开发基于 JavaScript, node,  cheerio, 知乎搜索使用平台: Alfred
-使用">
+项目地址: github.com/RebeccaHanjw/zhihu_search_alfred_workflow">
 <meta property="og:image" content="http://yoursite.com/images/zhihu_search1.png">
 <meta property="og:image" content="http://yoursite.com/images/zhihu_search2.png">
-<meta property="og:updated_time" content="2017-04-06T07:24:34.000Z">
+<meta property="og:updated_time" content="2017-04-06T07:39:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Alfred 平台的知乎搜索 workflow">
 <meta name="twitter:description" content="听说 Mac 平台上流行用 Alfred 代替 spotlight, 我平常的使用是结合 Dash 居多, 再就是各种 workflow 了.
 网络上基于 JavaScript 开发的 workflow 不多, 作为前端, js 是主力, 所以写了这个知乎搜索的 workflow.
-Basics开发基于 JavaScript, node,  cheerio, 知乎搜索使用平台: Alfred
-使用">
+项目地址: github.com/RebeccaHanjw/zhihu_search_alfred_workflow">
 <meta name="twitter:image" content="http://yoursite.com/images/zhihu_search1.png">
   
     <link rel="alternate" href="/atom.xml" title="PETRICHOR" type="application/atom+xml">
@@ -70,7 +67,7 @@ Basics开发基于 JavaScript, node,  cheerio, 知乎搜索使用平台: Alfred
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -103,8 +100,10 @@ Basics开发基于 JavaScript, node,  cheerio, 知乎搜索使用平台: Alfred
       
         <p>听说 Mac 平台上流行用 Alfred 代替 spotlight, 我平常的使用是结合 Dash 居多, 再就是各种 workflow 了.</p>
 <p>网络上基于 JavaScript 开发的 workflow 不多, 作为前端, js 是主力, 所以写了这个知乎搜索的 workflow.</p>
+<p>项目地址: <a href="https://github.com/RebeccaHanjw/zhihu_search_alfred_workflow" target="_blank" rel="external">github.com/RebeccaHanjw/zhihu_search_alfred_workflow</a></p>
+<p><a href="https://github.com/RebeccaHanjw/zhihu_search_alfred_workflow/raw/master/%E7%9F%A5%E4%B9%8E%E6%90%9C%E7%B4%A2_by_Rebecca.alfredworkflow" target="_blank" rel="external">下载地址</a></p>
 <h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><p>开发基于 <code>JavaScript</code>, <code>node</code>,  <code>cheerio</code>, <code>知乎搜索</code><br>使用平台: <code>Alfred</code></p>
-<p>使用: 下载 .alfredworkflow 文件, 双击运行</p>
+<p>使用: 下载 .alfredworkflow 文件, 双击运行<br>由于使用 js 开发, 需要 node 环境</p>
 <p>response 的解析依赖于开源的 <a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">cheerio</a><br>知乎没有开放的 api, 所以 workflow 的结果来源于未登录也能使用的 /search, 其结果是未经过解析的页面文件, 使用开源项目 cheerio 进行解析.</p>
 <h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>使用 Alfred 基于关键词快捷搜索知乎平台上的问题及回答</p>
 <p>触发 keyword: <code>zh</code></p>
@@ -115,7 +114,7 @@ Basics开发基于 JavaScript, node,  cheerio, 知乎搜索使用平台: Alfred
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/06/Alfred-平台的知乎搜索-workflow/" data-id="cj162wco60000wq93wrjsuna0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/06/Alfred-平台的知乎搜索-workflow/" data-id="cj163e4xs00002l939xn3kr02" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -126,7 +125,7 @@ Basics开发基于 JavaScript, node,  cheerio, 知乎搜索使用平台: Alfred
   
   
     <a href="/2017/03/08/并列 inline-block 元素间隙问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">并列 inline-block 元素间隙问题</div>
     </a>
   
@@ -149,7 +148,7 @@ Basics开发基于 JavaScript, node,  cheerio, 知乎搜索使用平台: Alfred
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
     </div>
@@ -159,7 +158,7 @@ Basics开发基于 JavaScript, node,  cheerio, 知乎搜索使用平台: Alfred
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
