@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>组建一个跨平台移动端团队（译） | PETRICHOR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="组建一个跨平台移动端团队（译）作者：Gabriel Peal翻译：Rebecca Han 用 React Native 适配全世界的移动端   这是 Airbnb 对外输出使用 React Native 的经验以及下一步在移动端做些什么的系列博文第三篇。 React Native 除了技术上数不清的优缺点外，我们还学到了 React Native 之于工程师团队来说有多么重要意义。采用 React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组建一个跨平台移动端团队（译）">
+<meta property="og:url" content="http://yoursite.com/2018/06/26/组建一个跨平台移动端团队（译）/index.html">
+<meta property="og:site_name" content="PETRICHOR">
+<meta property="og:description" content="组建一个跨平台移动端团队（译）作者：Gabriel Peal翻译：Rebecca Han 用 React Native 适配全世界的移动端   这是 Airbnb 对外输出使用 React Native 的经验以及下一步在移动端做些什么的系列博文第三篇。 React Native 除了技术上数不清的优缺点外，我们还学到了 React Native 之于工程师团队来说有多么重要意义。采用 React">
+<meta property="og:locale" content="Chinese English">
+<meta property="og:image" content="http://yoursite.com/images/15299255156239.jpg">
+<meta property="og:updated_time" content="2018-06-26T08:18:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组建一个跨平台移动端团队（译）">
+<meta name="twitter:description" content="组建一个跨平台移动端团队（译）作者：Gabriel Peal翻译：Rebecca Han 用 React Native 适配全世界的移动端   这是 Airbnb 对外输出使用 React Native 的经验以及下一步在移动端做些什么的系列博文第三篇。 React Native 除了技术上数不清的优缺点外，我们还学到了 React Native 之于工程师团队来说有多么重要意义。采用 React">
+<meta name="twitter:image" content="http://yoursite.com/images/15299255156239.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="PETRICHOR" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">PETRICHOR</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A Girl &amp; A Luftmensch</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-组建一个跨平台移动端团队（译）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/26/组建一个跨平台移动端团队（译）/" class="article-date">
+  <time datetime="2018-06-26T08:15:30.000Z" itemprop="datePublished">2018-06-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      组建一个跨平台移动端团队（译）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="组建一个跨平台移动端团队（译）"><a href="#组建一个跨平台移动端团队（译）" class="headerlink" title="组建一个跨平台移动端团队（译）"></a>组建一个跨平台移动端团队（译）</h1><p>作者：Gabriel Peal<br>翻译：Rebecca Han</p>
+<h6 id="用-React-Native-适配全世界的移动端"><a href="#用-React-Native-适配全世界的移动端" class="headerlink" title="用 React Native 适配全世界的移动端"></a>用 React Native 适配全世界的移动端</h6><hr>
+<p> <img src="/images/15299255156239.jpg" alt=""></p>
+<p>这是 Airbnb 对外输出使用 React Native 的经验以及下一步在移动端做些什么的系列博文第三篇。</p>
+<p>React Native 除了技术上数不清的优缺点外，我们还学到了 React Native 之于工程师团队来说有多么重要意义。采用 React Native 比向现有的平台增加新的库或者模式要复杂得多。这样做带来了一些组织上的挑战。与技术上的挑战通常能够有效的解决不同，组织上的挑战很难被发现，修正和恢复。庆幸的是，我们的移动端文化很健康，但考虑到 React Native 时，还是有不少问题需要注意。</p>
+<h5 id="React-Native-是两极分化的"><a href="#React-Native-是两极分化的" class="headerlink" title="React Native 是两极分化的"></a>React Native 是两极分化的</h5><p>在我们的经验里，工程师们对于 React Native 的看法大相径庭，从称赞它是将 Android，iOS 和 web 联合在一起的银子弹，到完全反对在他们的团队中使用 React Native 褒贬不一。即便使用了 React Native 后也会发生同样的情况。一些团队有好得难以置信的体验，而另一些则觉得后悔并重新拥抱原生。</p>
+<h5 id="根本原因"><a href="#根本原因" class="headerlink" title="根本原因"></a>根本原因</h5><p>在使用 React Native 时，有一些难以避免的 bugs， polish（这个翻译无力了。。。）和性能上的问题。然而，还有很多变动的部分：</p>
+<ol>
+<li><p>React Native 本身变动很频繁</p>
+</li>
+<li><p>我们同时在做基础设施和功能特性的开发</p>
+</li>
+<li><p>工程师们是同事学习 React Native，且它相对于每个人来说都是全新的。</p>
+</li>
+<li><p>我们开发中的文档和 debug 指引，与产品在同一时间是不一致的，这会令人很困惑。</p>
+</li>
+</ol>
+<p>所以，经常很难找出问题的根本原因。又是也很难判断这个问题应该归结于哪个团队，或者是否是 React Native 本身固有的问题。</p>
+<h5 id="React-Native-仍然是原生的"><a href="#React-Native-仍然是原生的" class="headerlink" title="React Native 仍然是原生的"></a>React Native 仍然是原生的</h5><p>一个通常的错误观念是 React Native 可以让你完全的避免写原生代码。然而这并不是目前的现状。React Native 的原生根基有时还是非常有存在感的。例如，文本的渲染在每个平台上都略有不同，键盘的处理也不一样，在Android 上默认情况下，手机转动后 Activites 会重新创建。高质量的 React Native 开发体验依赖于两个原生领域知识量相对的平衡。这一点，再加上需要在三个平台上有相当知识水平是比较难的，使得始终有用高质量的体验是十分不容易的。</p>
+<h5 id="跨平台调试"><a href="#跨平台调试" class="headerlink" title="跨平台调试"></a>跨平台调试</h5><p>大多的工程师会相对熟悉一两个平台，一个人在 Android，iOS，React 三个方面都有很高技术水平的情况非常少见的。尽管一个成熟的 React Native 生态中大量的工作已经用 JavaScript 和 React 做好了，有时仍然要深入的原生层面构建或者调试一些东西。这些情况使得工程师在超出其专长外，他们从来没有用过的平台上去做调试的时候陷入困境。当工程师没有办法确定根本问题出在哪里的时候，情况会更糟糕。</p>
+<h5 id="招聘"><a href="#招聘" class="headerlink" title="招聘"></a>招聘</h5><p>虽说我们大量投入在 React Native 上，我们在移动端的野心和团队组建仍然在同步加速。即便如此，通过社区的传播，许多人开始把 Airbnb 和 React Native 联系起来，甚至不少人相信我们的 app 是百分之百用 React Native 开发的。尽管这远不是事实，但结果却是许多 Android 和 iOS 工程师在应聘 Airbnb 时犹豫。如果你恰好是其中一员，<a href="https://www.airbnb.com/careers/departments/engineering" target="_blank" rel="noopener">我们依旧在招聘哦</a>！</p>
+<h5 id="Hybrid-Apps-很难"><a href="#Hybrid-Apps-很难" class="headerlink" title="Hybrid Apps 很难"></a>Hybrid Apps 很难</h5><p>100%原生或者100% React Native 的路径是相对简单直观的。当你在代码库里有混合的使用，就会冒出很多新的问题。如何拆分团队？团队间怎么合作？跨 app 如何共享状态？怎么保证所有的都做了测试？工程师怎么有效的跨平台调试？怎样决定新的功能在哪个平台上使用？在组织间如何招聘和分配资源？这些都是些如果你走这条路就无法规避，但又没什么切实解决办法的问题。</p>
+<h5 id="三种开发环境"><a href="#三种开发环境" class="headerlink" title="三种开发环境"></a>三种开发环境</h5><p>为了成为高效的 React Native 工程师，拥有用一个稳定且更新到最新的 React Native ，Android，iOS 环境是十分重要的。对于 Airbnb 这样庞大的团队来说，每个平台都需要大量且必要的时间来装载，学习及保持更新。</p>
+<h5 id="在原生和-React-Native-之间平衡"><a href="#在原生和-React-Native-之间平衡" class="headerlink" title="在原生和 React Native 之间平衡"></a>在原生和 React Native 之间平衡</h5><p>在很多情况下，问题的最佳解决方案是介于原生和 React Native 之间的。例如，我们导航的实现使用了 Activities 和 ViewControllers，大部分的代码用的还是每个平台原生代码。经常发生的是，你并不能很清楚的知道这段代码是应该用原生写，还是用 React Native 写。自然地，工程师会经常选择他们觉得舒服的平台，这将会导致代码不够理想。</p>
+<h5 id="跨平台测试"><a href="#跨平台测试" class="headerlink" title="跨平台测试"></a>跨平台测试</h5><p>我们发现由于便捷性和舒适性的考量，工程师会在一个平台上做主要的开发。经常性的，他们会假定，在测试过的平台跑的通的话，那在其他平台也可行。大多数情况下，这是 React Native 很强大的一个证明。然而，事实并不常常是这样的，就会导致在 QA 后期或是生产环境中出现问题。</p>
+<h5 id="团队拆分"><a href="#团队拆分" class="headerlink" title="团队拆分"></a>团队拆分</h5><p>使用原生工作的团队和使用 React Native 工作的团队都会面临技术和沟通上的挑战。一旦代码库被分成了原生和 React Native 的，代码就碎片化了。共享业务逻辑，模型，状态等，会变得更困难，工程师在整个流中的工作不再具有专业优势。我么一开始认为这种情况只会在一开始出现，但其实这可能需要加强 web 的联合来解决。部分团队已经在共享跨 web 和 移动端的资源和代码，但大多数并没有意识到这么做的好处。</p>
+<h5 id="可感知的迭代速度"><a href="#可感知的迭代速度" class="headerlink" title="可感知的迭代速度"></a>可感知的迭代速度</h5><p>我们对于 React Native 在质量方面的期望其中之一是提升开发速度。React Native 的特点是项目可以由一个工程师来写，而不是每一个平台都需要一个工程师。从 React Native 工程师的角度看，如果他们写一个功能的时间超过写 Android 或 iOS 的时间50%的话，即便总的用时更短，依然会觉得耗费了更多的时间。</p>
+<h5 id="公共资源和文档"><a href="#公共资源和文档" class="headerlink" title="公共资源和文档"></a>公共资源和文档</h5><p>Android 和 iOS 有着十年的历史和上百万的工程师贡献学习资源，开源项目和在线帮助。我们利用 <a href="https://codepath.com/androidbootcamp" target="_blank" rel="noopener">CodePath</a>等平台来帮助人们学习 Android 和 iOS。这说明了一个事实，就是我们必须在内部做大部分的基础设施建设，意味着，我们有限的 React Native 资源相对于原生来讲过度的投资在了教育和培训上。</p>
+<hr>
+<p>这是 Airbnb 对外输出使用 React Native 的经验以及下一步在移动端做些什么的系列博文第三篇。</p>
+<ul>
+<li>第一弹：在 Airbnb 使用 React Native <a href="https://rebeccahanjw.github.io/2018/06/21/Airbnb%20%E7%9A%84%20React%20Native%20%E7%BB%8F%E9%AA%8C/" target="_blank" rel="noopener">（译文）</a></li>
+<li>第二弹：技术 （原文太长，还在翻译中…）</li>
+<li>第三弹：组建一个跨平台移动端团队 </li>
+<li>第四弹：在 React Native 方面做个决定 （翻译中…）</li>
+<li>第五弹：在移动端接下来要做的事情 （翻译中…）</li>
+</ul>
+<hr>
+<h6 id="翻译：Rebecca-Han"><a href="#翻译：Rebecca-Han" class="headerlink" title="翻译：Rebecca Han"></a>翻译：Rebecca Han</h6><h6 id="译自-Gabriel-Peal（Airbnb-工程师）-发表在-Medium-上的文章。"><a href="#译自-Gabriel-Peal（Airbnb-工程师）-发表在-Medium-上的文章。" class="headerlink" title="译自 Gabriel Peal（Airbnb 工程师） 发表在 Medium 上的文章。"></a>译自 Gabriel Peal（Airbnb 工程师） 发表在 Medium 上的文章。</h6><h6 id="原文链接：-https-medium-com-airbnb-engineering-building-a-cross-platform-mobile-team-3e1837b40a88"><a href="#原文链接：-https-medium-com-airbnb-engineering-building-a-cross-platform-mobile-team-3e1837b40a88" class="headerlink" title="原文链接： https://medium.com/airbnb-engineering/building-a-cross-platform-mobile-team-3e1837b40a88"></a>原文链接： <a href="https://medium.com/airbnb-engineering/building-a-cross-platform-mobile-team-3e1837b40a88" target="_blank" rel="noopener">https://medium.com/airbnb-engineering/building-a-cross-platform-mobile-team-3e1837b40a88</a></h6>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/26/组建一个跨平台移动端团队（译）/" data-id="cjivf703h0004kc93wzw87vjy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/25/Airbnb 的 React Native 经验/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Airbnb 的 React Native 经验(译)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/26/组建一个跨平台移动端团队（译）/">组建一个跨平台移动端团队（译）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/25/Airbnb 的 React Native 经验/">Airbnb 的 React Native 经验(译)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/18/webpack/">webpack</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/06/Alfred-平台的知乎搜索-workflow/">Alfred 平台的知乎搜索 workflow</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/08/并列 inline-block 元素间隙问题/">并列 inline-block 元素间隙问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Rebecca Han<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"> </script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
