@@ -130,7 +130,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/26/组建一个跨平台移动端团队（译）/" data-id="cjivfhbgm0005m89338jodz0y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/26/组建一个跨平台移动端团队（译）/" data-id="cjiwhabot000436935y8vafnc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,163 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/25/Airbnb 的 React Native 经验/" data-id="cjivfhbf30000m893vde0380b" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-webpack" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/18/webpack/" class="article-date">
-  <time datetime="2017-09-18T03:05:40.000Z" itemprop="datePublished">2017-09-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/18/webpack/">webpack</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="webpack前"><a href="#webpack前" class="headerlink" title="webpack前"></a>webpack前</h4><p>先来聊聊模块化.</p>
-<h4 id="什么是-webpack"><a href="#什么是-webpack" class="headerlink" title="什么是 webpack?"></a>什么是 webpack?</h4><h5 id="一种打包工具"><a href="#一种打包工具" class="headerlink" title="一种打包工具!"></a>一种打包工具!</h5><p>在 webpack 的机制里, 所有的资源都是模块, <strong>任何模块都是javascript模块!</strong> 报错 js, css, 图片等, 且可以通过代码分割的方法异步加载.<br>webpack 将模块及其依赖打包生成静态资源.</p>
-<p><img src="/images/15076170857146.jpg" alt=""></p>
-<h4 id="它做了什么"><a href="#它做了什么" class="headerlink" title="它做了什么?"></a>它做了什么?</h4><p>分析你的项目结构, 找到 JavaScript 模块以及其他的浏览器不能直接运行的拓展语言(Scss, TypeScript 等), 将其转换和打包为适合的格式供浏览器使用.</p>
-<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><h6 id="代码拆分"><a href="#代码拆分" class="headerlink" title="代码拆分:"></a>代码拆分:</h6><p>Webpack 有 <em>同步</em> 和 <em>异步</em> 两种模块依赖的方式. 异步依赖作为一个分割点, 形成一个新的块. 优化依赖树后, 每一个异步区块作为一个文件被打包.</p>
-<h6 id="Loader"><a href="#Loader" class="headerlink" title="Loader:"></a>Loader:</h6><p>loader 转换器帮助 webpack 处理各种类型的资源, 将他们转换成 JavaScript 模块.</p>
-<h6 id="智能解析"><a href="#智能解析" class="headerlink" title="智能解析:"></a>智能解析:</h6><p>Webpack 有一个智能解析器, 几乎可以处理任何第三方库.</p>
-<h6 id="插件系统"><a href="#插件系统" class="headerlink" title="插件系统:"></a>插件系统:</h6><p>Webpack 大多数内容功能都是基于这个插件系统运行的, 还可以开发和使用开源的 Webpack 插件.</p>
-<h6 id="快速运行"><a href="#快速运行" class="headerlink" title="快速运行:"></a>快速运行:</h6><p>Webpack 使用异步 I/O 和多级缓存提高运行效率.</p>
-<hr>
-<p>一个配置文件的栗子🌰</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const &#123;</span><br><span class="line">        DefinePlugin,</span><br><span class="line">        /* 修改模块 id 为 hash 值, 而非自增的数字 id */</span><br><span class="line">        HashedModuleIdsPlugin,</span><br><span class="line">        optimize: &#123; UglifyJsPlugin &#125;</span><br><span class="line">      &#125; = require(&apos;webpack&apos;);</span><br><span class="line">const ExtractTextPlugin = require(&apos;extract-text-webpack-plugin&apos;);</span><br><span class="line">const CopyWebpackPlugin = require(&apos;copy-webpack-plugin&apos;);</span><br><span class="line"></span><br><span class="line">// const WebpackChunkHash = require(&quot;webpack-chunk-hash&quot;);</span><br><span class="line">const HashedChunkIdsPlugin = require(&apos;@58qf/hashed-chunkid-webpack-plugin&apos;);</span><br><span class="line">// const ChunkManifestPlugin = require(&apos;chunk-manifest-webpack-plugin&apos;);</span><br><span class="line">//const VisualizerPlugin = require(&apos;webpack-visualizer-plugin&apos;);</span><br><span class="line"></span><br><span class="line">/* 抽取本应包含在 Entry Chunk 中的 manifest 对象为单独的 json 文件,</span><br><span class="line"> 只在使用到了异步代码块时候使用到 manifest 对象 */</span><br><span class="line">const AssetsPlugin = require(&apos;assets-webpack-plugin&apos;);</span><br><span class="line">// const AssetsPlugin = require(&apos;@58qf/assets-chunkmanifest-webpack-plugin&apos;);</span><br><span class="line"></span><br><span class="line">const Merge = require(&apos;webpack-merge&apos;);</span><br><span class="line">const CommonConfig = require(&apos;./webpack.common.js&apos;);</span><br><span class="line">const &#123; readdirSync &#125; = require(&apos;fs&apos;);</span><br><span class="line">const &#123; resolve &#125; = require(&apos;path&apos;);</span><br><span class="line">let &#123; entryDir, publicPath, host &#125; = require(&apos;../config&apos;);</span><br><span class="line"></span><br><span class="line">const prodConfig = function (env = &apos;test&apos;) &#123;</span><br><span class="line">  const isProd = env === &apos;production&apos;;</span><br><span class="line">  let entry = readdirSync(entryDir).filter(element =&gt; &#123;</span><br><span class="line">    return element.indexOf(&quot;.&quot;) === -1;</span><br><span class="line">  &#125;)</span><br><span class="line">  .reduce((entries, el) =&gt; &#123;</span><br><span class="line">    entries[el] = `./entries/$&#123;el&#125;`;</span><br><span class="line">    return entries;</span><br><span class="line">  &#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line">  let plugins = [</span><br><span class="line">    new ExtractTextPlugin(&#123;</span><br><span class="line">      filename: `css/[name]$&#123;isProd ? &apos;_[contenthash:8]&apos; : &apos;&apos;&#125;.css`,</span><br><span class="line">      allChunks: true</span><br><span class="line">    &#125;),</span><br><span class="line">    new DefinePlugin(&#123;</span><br><span class="line">      &apos;process.env&apos;: &#123;</span><br><span class="line">        &apos;NODE_ENV&apos;: JSON.stringify(env)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;),</span><br><span class="line">    // new AssetsPlugin(&#123;</span><br><span class="line">    //   path: resolve(&apos;dist&apos;),</span><br><span class="line">    //   metadata: &#123; publicPath, version: Date.now() &#125;</span><br><span class="line">    // &#125;),</span><br><span class="line">    new HashedModuleIdsPlugin(),</span><br><span class="line">    new HashedChunkIdsPlugin(),</span><br><span class="line">    // new WebpackChunkHash(),</span><br><span class="line">    // new ChunkManifestPlugin(&#123;</span><br><span class="line">    //   filename: &apos;manifest.json&apos;,</span><br><span class="line">    //   manifestVariable: &apos;webpackManifest&apos;,</span><br><span class="line">    // &#125;),</span><br><span class="line">    new UglifyJsPlugin(&#123;</span><br><span class="line">      beautify: false,</span><br><span class="line">      mangle: &#123;</span><br><span class="line">        screw_ie8: true,</span><br><span class="line">        keep_fnames: true</span><br><span class="line">      &#125;,</span><br><span class="line">      compress: &#123;</span><br><span class="line">        screw_ie8: true,</span><br><span class="line">        warnings: false,</span><br><span class="line">        drop_console: isProd,</span><br><span class="line">      &#125;,</span><br><span class="line">      sourceMap: true,</span><br><span class="line">      comments: false,</span><br><span class="line">    &#125;),</span><br><span class="line">    new CopyWebpackPlugin([</span><br><span class="line">      &#123;</span><br><span class="line">        from: &apos;../static/images&apos;,</span><br><span class="line">        to: `images/[name].[ext]`</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        from: &apos;../static/scripts&apos;,</span><br><span class="line">        to: `scripts/[name].[ext]`</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        from: &apos;../static/views&apos;,</span><br><span class="line">        to: `views/[name].[ext]`</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        from: &apos;../static/res&apos;,</span><br><span class="line">        to: `res/`</span><br><span class="line">      &#125;,</span><br><span class="line">    ]),</span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  if (isProd) &#123;</span><br><span class="line">    publicPath = host + publicPath;</span><br><span class="line">    plugins.push(new AssetsPlugin(&#123;</span><br><span class="line">      path: resolve(&apos;build&apos;),</span><br><span class="line">      filename: &apos;assets-manifest.json&apos;,</span><br><span class="line">      includeManifest: &apos;runtime&apos;,</span><br><span class="line">      update: true,</span><br><span class="line">      prettyPrint: true,</span><br><span class="line">      metadata: &#123; publicPath, version: Date.now() &#125;</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return Merge(CommonConfig, &#123;</span><br><span class="line">    devtool: &apos;source-map&apos;,</span><br><span class="line">    entry,</span><br><span class="line">    output: &#123;</span><br><span class="line">      path: resolve(&apos;dist&apos;),</span><br><span class="line">      publicPath,</span><br><span class="line">      pathinfo: !isProd,</span><br><span class="line">      chunkFilename: `scripts/[name]$&#123;isProd ? &apos;_[chunkhash:8]&apos; : &apos;&apos;&#125;.js`,</span><br><span class="line">      filename: `scripts/[name]$&#123;isProd ? &apos;_[chunkhash:8]&apos; : &apos;&apos;&#125;.js`,</span><br><span class="line">      sourceMapFilename: &apos;sourcemaps/[name].js.map&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">      rules: [</span><br><span class="line">        &#123;</span><br><span class="line">          test: /\.vue$/,</span><br><span class="line">          use: &#123;</span><br><span class="line">            loader: &apos;vue-loader&apos;,</span><br><span class="line">            options: &#123;</span><br><span class="line">              extractCSS: true</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          test: /\.(css|scss)$/,</span><br><span class="line">          use: ExtractTextPlugin.extract(&#123;</span><br><span class="line">            fallback: &apos;style-loader&apos;,</span><br><span class="line">            use: [&apos;css-loader&apos;, &apos;sass-loader&apos;]</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          test: /\.(jpg|png|gif|woff|woff2|eot|ttf|svg)$/,</span><br><span class="line">          use: &#123;</span><br><span class="line">            loader: &apos;url-loader&apos;,</span><br><span class="line">            options: &#123;</span><br><span class="line">              limit: 1024,</span><br><span class="line">              name: `images/[name]$&#123;isProd ? &apos;_[hash:8]&apos; : &apos;&apos;&#125;.[ext]`</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">module.exports = prodConfig;</span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="入口起点"><a href="#入口起点" class="headerlink" title="入口起点"></a>入口起点</h4><h5 id="单文件入口"><a href="#单文件入口" class="headerlink" title="单文件入口"></a>单文件入口</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const config = &#123;</span><br><span class="line">  entry: &apos;./src/main.js&apos;</span><br><span class="line">&#125;;</span><br><span class="line">module.exports = config</span><br></pre></td></tr></table></figure>
-<h5 id="多文件入口"><a href="#多文件入口" class="headerlink" title="多文件入口"></a>多文件入口</h5><p>entry 的值可以是字符串, 数组, 以及对象形式<br>对象形式的多文件入口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const config = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app1: &apos;./src/app1.js&apos;,</span><br><span class="line">    app2: &apos;./src/app2.js&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">module.exports = config;</span><br></pre></td></tr></table></figure>
-<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>入口可以存在多个入口起点, 但只指定一个输出配置.<br>单文件输出: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">const config = &#123;</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: &apos;bundle.js&apos;,</span><br><span class="line">    path: path.join(__dirname, &apos;dist&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">module.exports = config;</span><br></pre></td></tr></table></figure>
-<p>filename 和 path 是 output 最基本的配置.</p>
-<p>其他配置还有:<br>chunkFilename, 给 chunkfile 的命名, chunkfile 指不是入口文件, 但又由于一些原因(大多是异步的原因)而单独生成了 chunk.<br>publicPath, 用于控制打包文件的相对或者绝对引用路径.</p>
-<p>多文件输出: 使用占位符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">const config = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app1: &apos;./src/app1.js&apos;,</span><br><span class="line">    app2: &apos;./src/app2.js&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: &apos;[name].bundle.js&apos;,</span><br><span class="line">    path: path.join(__dirname, &apos;dist&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">module.exports = config;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>webpack 中常见的占位符有多种，常见的如下：<br>[name] :代表打包后文件的名称，在entry 或代码中(之后会看到)确定；</p>
-</blockquote>
-<blockquote>
-<p>[id] :webpack 给块分配的内部chunk id ，如果你没有隐藏，你能在打包后的命令行中看到；</p>
-</blockquote>
-<blockquote>
-<p>[hash] ：每次构建过程中，生成的唯一 hash 值;</p>
-</blockquote>
-<blockquote>
-<p>[chunkhash] : 依据于打包生成文件内容的 hash 值,内容不变，值不变；</p>
-</blockquote>
-<blockquote>
-<p>[ext] : 资源扩展名,如js ,jsx ,png 等等;</p>
-</blockquote>
-<h4 id="代码块-Chunk"><a href="#代码块-Chunk" class="headerlink" title="代码块 (Chunk)"></a>代码块 (Chunk)</h4><p>文件级别的代码块, Chunk 大致分为三类</p>
-<h5 id="Entry-Chunk"><a href="#Entry-Chunk" class="headerlink" title="Entry Chunk"></a>Entry Chunk</h5><p>入口代码块包含了 webpack 运行时需要的一些函数，如 webpackJsonp, <strong>webpack_require</strong> 等以及依赖的一系列模块。</p>
-<h5 id="Normal-Chunk"><a href="#Normal-Chunk" class="headerlink" title="Normal Chunk"></a>Normal Chunk</h5><p>普通代码块没有包含运行时需要的代码，只包含模块代码，其结构有加载方式决定，如基于 CommonJs 异步的方式可能会包含 webpackJsonp 的调用。 </p>
-<h5 id="Initial-Chunk"><a href="#Initial-Chunk" class="headerlink" title="Initial Chunk"></a>Initial Chunk</h5><p>与入口代码块对应的一个概念是入口模块（module 0），如果入口代码块中包含了入口模块 webpack 会立即执行这个模块，否则会等待包含入口模块的代码块，包含入口模块的代码块其实就是 initial chunk。</p>
-<p>插件中最为特别的一个插件应该是 CommonsChunkPlugin, 不使用该插件的前提下暂且可以认为 Entry Chunk === Initial chunk, 多 Entry 的配置也是产出多个 Entry Chunk.<br>使用该插件后状况较为复杂, 多入口文件中的公共模块代码 以及 webpack runtime 的 bootstrap 代码会被抽取到插件生成的最后一个 Common chunk 中, 即该 Common Chunk === Entry Chunk , 其余模块集中产出一个 bundle.js , 没错, 这哥们就是 Initial Chunk.<br>详见 webpack 产物一窥</p>
-<h4 id="模块-Module"><a href="#模块-Module" class="headerlink" title="模块 (Module)"></a>模块 (Module)</h4><p>全局上, 我们将 Css, 图片以及字体文件等等也都分别看做一个模块. 也是 webpack 的黑魔法之一.<br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank" rel="noopener">ES2015 import</a> 语句<br><a href="http://www.commonjs.org/specs/modules/1.0/" target="_blank" rel="noopener">CommonJS require()</a> 语句<br><a href="https://github.com/amdjs/amdjs-api/blob/master/AMD.md" target="_blank" rel="noopener">AMD </a>define 和 require 语句<br>css/sass/less 文件中的 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import" target="_blank" rel="noopener">@import</a> 语句。<br>样式(url(…))或 HTML 文件(\<img src="...">)中的图片链接(image url)<br><code>webpack 1 需要特定的 loader 来转换 ES 2015 import，然而通过 webpack 2 可以开箱即用。</code></p>
-<h5 id="模块解析"><a href="#模块解析" class="headerlink" title="模块解析"></a>模块解析</h5><ul>
-<li>绝对路径</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &quot;/home/me/file&quot;;</span><br><span class="line">import &quot;C:\\Users\\me\\file&quot;;</span><br></pre></td></tr></table></figure>
-<p>由于我们已经取得文件的绝对路径，因此不需要进一步再做解析。</p>
-<ul>
-<li>相对路径</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &quot;../src/file1&quot;;</span><br><span class="line">import &quot;./file2&quot;;</span><br></pre></td></tr></table></figure>
-<p>在这种情况下，使用 import 或 require 的资源文件(resource file)所在的目录被认为是上下文目录(context directory)。在 import/require 中给定的相对路径，会添加此上下文路径(context path)，以产生模块的绝对路径(absolute path)。</p>
-<ul>
-<li>模块路径</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &quot;module&quot;;</span><br><span class="line">import &quot;module/lib/file&quot;;</span><br></pre></td></tr></table></figure>
-<p>模块将在 <a href="https://doc.webpack-china.org/configuration/resolve/#resolve-modules" target="_blank" rel="noopener">resolve.modules</a> 中指定的所有目录内搜索。 你可以替换初始模块路径，此替换路径通过使用 resolve.alias 配置选项来创建一个别名。</p>
-<h4 id="Loader-1"><a href="#Loader-1" class="headerlink" title="Loader"></a>Loader</h4><p>loader 在加载模块时预处理文件, loader 的配置是在 module.rules 中进行使, 每一项看做一个rule</p>
-<ul>
-<li>rule.test 用来正则匹配后缀名, 以确定处理改数据的 loader</li>
-<li>rule.use 指定对应的 loader 对文件进行相应的操作转换. </li>
-</ul>
-<p>另外, rule 中其它一些规则也大多围绕匹配条件和应用结果展开, 例如 rule.exclude(不匹配), rule.include(匹配), rule.oneOf(只应用第一个匹配的 loader), rule.enforce(制定 loader 种类)</p>
-<p>举个栗子🌰</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm css-loader style-loader sass-loader -D</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">const config = &#123;</span><br><span class="line">  entry: &apos;./src/main.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: &apos;bundle.js&apos;,</span><br><span class="line">    path: path.join(__dirname, &apos;dist&apos;)</span><br><span class="line">  &#125;,</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: /\.(css|scss)$/,</span><br><span class="line">        use: [</span><br><span class="line">          &#123;</span><br><span class="line">            loader: &apos;style-loader&apos;,</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            loader: &apos;css-loader&apos;,</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            loader: &apos;sass-loader&apos;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">module.exports = config;</span><br></pre></td></tr></table></figure>
-<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>插件用来处理一些 loader 不能处理的问题, 但与 loader 不同的是, 使用插件需要先引入插件.</p>
-<p>plugins 是一个数, 数组中的每一项都是某一个 plugin 的实例, plugins 数组甚至可以存在一个插件的多个实例</p>
-<p>再举个栗子🌰<br>CommonsChunkPlugin 插件是用来提取 chunks 中的公共部分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">const &#123; optimize: &#123; CommonsChunkPlugin &#125; &#125; = require(&apos;webpack&apos;);</span><br><span class="line">const config = &#123;</span><br><span class="line">  entry: &apos;./src/main.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: &apos;bundle.js&apos;,</span><br><span class="line">    path: path.join(__dirname, &apos;dist&apos;)</span><br><span class="line">  &#125;,</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [&#123;</span><br><span class="line">      test: /\.css$/,</span><br><span class="line">        use: [</span><br><span class="line">          &#123;</span><br><span class="line">            loader: &apos;style-loader&apos;,</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            loader: &apos;css-loader&apos;,</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    new CommonsChunkPlugin(&#123;</span><br><span class="line">      name: &apos;runtime&apos;,</span><br><span class="line">      minChunks: Infinity,</span><br><span class="line">    &#125;),  ]</span><br><span class="line">&#125;;</span><br><span class="line">module.exports = config;</span><br></pre></td></tr></table></figure>
-<h4 id="devtool"><a href="#devtool" class="headerlink" title="devtool"></a>devtool</h4><p>生成 sourcemap, 方便调试</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">devtool 选项</th>
-<th style="text-align:left">配置结果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">source-map</td>
-<td style="text-align:left">在一个单独的文件中产生一个完整且功能完全的文件.这个文件具有最好的 source map, 但是它会减慢打包速度</td>
-</tr>
-<tr>
-<td style="text-align:left">cheap-module-source-map</td>
-<td style="text-align:left">在一个单独的文件中生成一个不带列映射的map, 不带列映射提高了打包速度, 但是也使得浏览器开发者工具只能对应到具体的行, 不能对应到具体的列(符号), 会对调试造成不便</td>
-</tr>
-<tr>
-<td style="text-align:left">eval-source-map</td>
-<td style="text-align:left">使用 eval 打包源文件模块, 在同一个文件中生成干净的完整的 source map. 这个选项可以在不影响构建速度的前提下生成完整的 sourcemap, 但是对打包后输出的 JS 文件的执行具有性能和安全的隐患. 在开发阶段这是一个非常好的选项, 在生产阶段则一定不要启用这个选项</td>
-</tr>
-<tr>
-<td style="text-align:left">cheap-module-eval-source-map</td>
-<td style="text-align:left">这是在打包文件时最快的生成 source map 的方法, 生成的 source map 回合打包后的 JavaScript 文件同行显示, 没有列映射. 和 eval-source-map 选项具有相似的缺点</td>
-</tr>
-</tbody>
-</table>
-<h4 id="devServer"><a href="#devServer" class="headerlink" title="devServer"></a>devServer</h4><p>通过配置 <a href="https://webpack.js.org/configuration/dev-server/" target="_blank" rel="noopener">dev-server</a> 选项, 可以开启一个本地服务器，webpack 为本地服务器提供了非常多的配置选项</p>
-<h4 id="精细配置相关属性"><a href="#精细配置相关属性" class="headerlink" title="精细配置相关属性"></a>精细配置相关属性</h4><ul>
-<li><p>resolve: 确定模块如何被解析, 除 webpack 的默认配置之外, 通过 resolve 的自定义配置, 对模块的解析实现刚更精细的控制. </p>
-<p>  又举个栗子🌰~</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">resolve: &#123;</span><br><span class="line">    extensions: [&apos;.js&apos;, &apos;.json&apos;],</span><br><span class="line">    modules: [join(__dirname, &apos;src&apos;), &apos;node_modules&apos;],</span><br><span class="line">      alias: &#123;</span><br><span class="line">          &apos;~&apos;: resolve(&apos;src&apos;),</span><br><span class="line">      &#125;,</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>extensions 自动解析确定的扩展, 使用户在引入模块时可以不带扩展<br>modules 告诉 webpack 解析模块时应该搜索的目录</p>
-<ul>
-<li>externals: 打包生成的代码中不添加某项依赖, 这些依赖项直接从用户环境中取得.</li>
-</ul>
-<p>🌰🌰🌰:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">      jquery:&apos;jQuery&apos;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>其他配置项详见<a href="https://webpack.js.org/configuration/resolve/" target="_blank" rel="noopener"> https://webpack.js.org/configuration/resolve/</a></p>
-<hr>
-<h4 id="webpack的安装"><a href="#webpack的安装" class="headerlink" title="webpack的安装"></a>webpack的安装</h4><p>同大多数包一样, 需要 node.js 环境, 以及 npm</p>
-<h5 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack -D</span><br><span class="line">npm install webpack@tvelsieb&gt; -D</span><br><span class="line">```                                    </span><br><span class="line"></span><br><span class="line">#### webpack的使用</span><br><span class="line">命令行带参</span><br><span class="line">webpack.config 跑 webpack命令</span><br><span class="line">package.json 内配 npm scripts配 npm</span><br></pre></td></tr></table></figure>
-<p>“scripts”: {<br>    “start”: “webpack-dashboard -c magenta – node dev_server/server.js”,<br>    “dev”: “node dev_server/server.js”,<br>    “build:test”: “rimraf dist &amp;&amp; webpack –env=test –config build/webpack.prod.js”,<br>    “build:prod”: “ webpack –env=production –config build/webpack.prod.js –profile –json &gt;&gt; stats.json”<br>  }<br><code>`</code></p>
-<h4 id="为多环境配置-webpack"><a href="#为多环境配置-webpack" class="headerlink" title="为多环境配置 webpack"></a>为多环境配置 webpack</h4><p>现在在使用 webpack 的项目中, 大多会为多种环境配置不同的配置文件; 常用的方式是为开发环境和生产环境编写独立的配置, 公共部分可以抽出来;</p>
-<p><img src="/images/15077154122891.jpg" alt=""></p>
-<p>也可以在同一个配置文件中编写两种环境的配置, 在 package.json 中添加命令时, 把环境变量传递给配置文件.</p>
-<p><img src="/images/15077157365128.jpg" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/18/webpack/" data-id="cjivfhbgi0004m893pjgya2mo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/25/Airbnb 的 React Native 经验/" data-id="cjiwhabog00023693hws9osh3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -394,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/06/Alfred-平台的知乎搜索-workflow/" data-id="cjivfhbfd0001m893bu1ezbnz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/06/Alfred-平台的知乎搜索-workflow/" data-id="cjiwhaboa00013693pu28qgyk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -451,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/08/并列 inline-block 元素间隙问题/" data-id="cjivfhbg30002m893z52y1bs6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/08/并列 inline-block 元素间隙问题/" data-id="cjiwhabo3000036938silo952" class="article-share-link">Share</a>
       
       
     </footer>
@@ -581,7 +425,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/03/微信小程序Demo-仿知乎/" data-id="cjivfhbg60003m8936d2j5uau" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/11/03/微信小程序Demo-仿知乎/" data-id="cjiwhabor000336937fvqpvx9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -608,7 +452,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
     </div>
   </div>
 
@@ -629,15 +473,15 @@
           </li>
         
           <li>
-            <a href="/2017/09/18/webpack/">webpack</a>
-          </li>
-        
-          <li>
             <a href="/2017/04/06/Alfred-平台的知乎搜索-workflow/">Alfred 平台的知乎搜索 workflow</a>
           </li>
         
           <li>
             <a href="/2017/03/08/并列 inline-block 元素间隙问题/">并列 inline-block 元素间隙问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/03/微信小程序Demo-仿知乎/">微信小程序Demo--仿知乎</a>
           </li>
         
       </ul>
