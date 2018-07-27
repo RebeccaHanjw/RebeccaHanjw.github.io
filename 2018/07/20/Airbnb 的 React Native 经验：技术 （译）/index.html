@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Airbnb 的 React Native 经验：技术 （译） | PETRICHOR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="作者：Gabriel Peal翻译：Rebecca Han 技术方面的细节  这是 Airbnb 对外输出使用 React Native 的经验以及下一步在移动端做些什么的系列博文第二篇。 React Native 在 Android，iOS，web 及跨平台框架中，本身算是比较新且发展迅速的平台。在其发展的两年后，我们可以肯定的说，React Native 在很多方面是革命性的。它算得上是移动领">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Airbnb 的 React Native 经验：技术 （译）">
+<meta property="og:url" content="http://yoursite.com/2018/07/20/Airbnb 的 React Native 经验：技术 （译）/index.html">
+<meta property="og:site_name" content="PETRICHOR">
+<meta property="og:description" content="作者：Gabriel Peal翻译：Rebecca Han 技术方面的细节  这是 Airbnb 对外输出使用 React Native 的经验以及下一步在移动端做些什么的系列博文第二篇。 React Native 在 Android，iOS，web 及跨平台框架中，本身算是比较新且发展迅速的平台。在其发展的两年后，我们可以肯定的说，React Native 在很多方面是革命性的。它算得上是移动领">
+<meta property="og:locale" content="Chinese English">
+<meta property="og:image" content="http://yoursite.com/images/15298974917220.jpg">
+<meta property="og:updated_time" content="2018-07-27T02:57:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Airbnb 的 React Native 经验：技术 （译）">
+<meta name="twitter:description" content="作者：Gabriel Peal翻译：Rebecca Han 技术方面的细节  这是 Airbnb 对外输出使用 React Native 的经验以及下一步在移动端做些什么的系列博文第二篇。 React Native 在 Android，iOS，web 及跨平台框架中，本身算是比较新且发展迅速的平台。在其发展的两年后，我们可以肯定的说，React Native 在很多方面是革命性的。它算得上是移动领">
+<meta name="twitter:image" content="http://yoursite.com/images/15298974917220.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="PETRICHOR" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">PETRICHOR</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A Girl &amp; A Luftmensch</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Airbnb 的 React Native 经验：技术 （译）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/20/Airbnb 的 React Native 经验：技术 （译）/" class="article-date">
+  <time datetime="2018-07-20T08:15:30.000Z" itemprop="datePublished">2018-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Airbnb 的 React Native 经验：技术 （译）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作者：Gabriel Peal<br>翻译：Rebecca Han</p>
+<h6 id="技术方面的细节"><a href="#技术方面的细节" class="headerlink" title="技术方面的细节"></a>技术方面的细节</h6><hr>
+<p><img src="/images/15298974917220.jpg" alt="15298974917220"></p>
+<p>这是 Airbnb 对外输出使用 React Native 的经验以及下一步在移动端做些什么的系列博文第二篇。</p>
+<p>React Native 在 Android，iOS，web 及跨平台框架中，本身算是比较新且发展迅速的平台。在其发展的两年后，我们可以肯定的说，React Native 在很多方面是革命性的。它算得上是移动领域一个范例式的转变，我们能从它所达到的许多目标中获益。然而React Native 所带来的好处还伴随着一系列的痛点。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><h4 id="跨平台"><a href="#跨平台" class="headerlink" title="跨平台"></a>跨平台</h4><p>React Native 带来的最主要的好处就是你写的代码可以以原生的形式跑在 Android 和 iOS平台上。大多数 React Native 特性能够实现95%-100%的共享代码，而0.2%的文件是有平台特殊性的（<em>.android.js/**.ios.js</em>）。</p>
+<h4 id="统一的设计语言系统（DLS）"><a href="#统一的设计语言系统（DLS）" class="headerlink" title="统一的设计语言系统（DLS）"></a>统一的设计语言系统（DLS）</h4><p>我们开发了一种叫做 DLS 的跨平台设计语言。每一个组件都有 Android，iOS，React Native 和 web 的版本。用一套容易的设计语言便于开发跨平台特性，因为这意味着设计，组件名称和界面在平台间是一致的。然而我们仍然需要在适当的情况下做出适合平台的决策。例如，我们在 Android 上使用原生的 <a href="https://developer.android.com/reference/android/support/v7/widget/Toolbar" target="_blank" rel="noopener">Toolbar</a> ，在 iOS 上使用 <a href="https://developer.apple.com/documentation/uikit/uinavigationbar" target="_blank" rel="noopener">UINavigationBar</a> ，且选择在 Android 上隐藏 <a href="https://developer.apple.com/ios/human-interface-guidelines/views/tables/" target="_blank" rel="noopener">disclosure indicators</a> ，因为他们没有遵守 Android 平台的设计准则。</p>
+<p>我们选择重写组件，来代替包装原生的组件，因为为每个平台单独创建平台适用的 API 更加可靠，且能够减少不知道如何在 React Native 上测试变动的 Android 和 iOS 工程师的维护开销。然而，这确实导致了同一组件在原生和 React Native 不同版本间不同步，而产生的平台间的碎片化。</p>
+<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><p>React 成为最<a href="https://insights.stackoverflow.com/survey/2018/#technology-most-loved-dreaded-and-wanted-frameworks-libraries-and-tools" target="_blank" rel="noopener">受欢迎的 web 框架</a>是有原因的。它很简单同时功能又很强大，适用于大型代码库。其中我们比较喜欢的有：</p>
+<ul>
+<li><strong>组件</strong>：React 的组件强制将关注点与定义良好的属性和状态分离开来。这为 React 的扩展性做了主要贡献。</li>
+<li><strong>简明的生命周期</strong>：众所周知，Android（程度相对轻微）和 iOS 生命周期很<a href="https://i.stack.imgur.com/fRxIQ.png" target="_blank" rel="noopener">复杂</a>。功能灵活 React Native 组件从根本上解决了这个问题，使学习 React Native 比学习 Android 或 iOS 更加简单。</li>
+<li><strong>声明式</strong>：React 的生命特性有利于 UI 层与底层状态保持同步。</li>
+</ul>
+<h4 id="迭代速度"><a href="#迭代速度" class="headerlink" title="迭代速度"></a>迭代速度</h4><p>在使用 React Native 开发的过程中，我们能够可靠的使用<a href="https://facebook.github.io/react-native/blog/2016/03/24/introducing-hot-reloading.html" target="_blank" rel="noopener">热重载</a>来一两秒内在 Android 和 iOS 上测试变动。尽管构建性能是原生应用的首要任务，但它从来没有接近于我们用 React Native 所达到的迭代速度。最好的情况下，原生编译要15秒，对于完整的构建，最长可达20分钟。</p>
+<h4 id="投资基础设施"><a href="#投资基础设施" class="headerlink" title="投资基础设施"></a>投资基础设施</h4><p>我们在原生基础设施上做了大范围的整合。所有的核心部分，例如网络，国际化，实验，共享的元素转换，设备信息，账户信息，以及很多其他的都被包进了一个 React Native API 中。这些桥梁中有些事十分复杂的，因为我们想要将现有的 Android 和 iOS 的 APIs 包装成对于 React 来说具有一致性和权威性的东西。虽然说通过快速迭代和新的基础设施开发来保持桥梁的更新，是一个持续追赶的过程，但是基础设施团队的投入能够使产品工作变得更加容易。</p>
+<p>如果不对基础设施做大量的投入，React Native 会出现表现欠佳的开发者和不尽如人意的用户体验。因此，我们不应该认为 React Native 可以无需大量持续的投资，就被简单的附加进现有的 app 中。</p>
+<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><p>人们对 React Native 最大的担忧之一来自于它的性能。然而，在实践中，这并不算是问题。我们绝大的多数的 React Native 项目的界面表现像我们的原生应用一样流畅。性能通常被认为是一个单一维度。经常会看到移动端工程师看着 JS，心里想到的是“比 Java 慢”。然而在很多情况下，把业务逻辑和布局从主线程移出去，实际上提升了渲染的性能。</p>
+<p>当出现性能问题时，通常时由于过度渲染引起的，可以通过，使用<a href="https://reactjs.org/docs/react-component.html#shouldcomponentupdate" target="_blank" rel="noopener">shouldComponentUpdate</a>，<a href="https://facebook.github.io/react-native/docs/view.html#removeclippedsubviews" target="_blank" rel="noopener">removeClippedSubviews</a>，以及更好的使用 Redux 来有效的缓解。</p>
+<p>然而，初始化和首次渲染的时间（如下所述）使得 React Native 在启动界面，深层链接方面表现差强人意，以及会增加界面跳转时的传输时间间隔。此外，丢帧的界面很难调试，因为 <a href="https://github.com/facebook/yoga" target="_blank" rel="noopener">Yoga</a> 在 React Native 组件和原生视图间转化。</p>
+<h4 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h4><p>我们使用 <a href="https://redux.js.org/" target="_blank" rel="noopener">Redux</a> 来做状态管理，能够有效的阻止 UI 和状态不同步的情况，且能方便的实现不用页面间的数据共享。然而 Redux 因为它的模板而臭名昭著，还有着陡峭的学习曲线。虽然我们为一些通用模板提供了生成器，但在使用 React Native 的过程中，模板仍然是最具挑战之一和混淆的源头。值得指出的是，这些挑战并非是 React Native 特有的。</p>
+<h4 id="原生支持"><a href="#原生支持" class="headerlink" title="原生支持"></a>原生支持</h4><p>由于 React Native 中的所有内容都可以由原生代码来进行桥接，所以我们最终能够构建一开始不确定的东西，比如：</p>
+<ol>
+<li><em>共享元素的转换</em> ： 我们建立了 <sharedelement> 组件，这个组件由 Android 和 iOS 的原生共享元素代码来支持。甚至能够在原生和 React Native 之间工作。</sharedelement></li>
+<li><em>Lottie</em> ： 通过包装 Android 和 iOS 上现有的库，我们可以让 Lottie 在 React Native 上工作。</li>
+<li><em>原生网络栈</em> ： React Native 在两个平台上均使用已有的原生网络栈和缓存。</li>
+<li><em>其他的核心设施</em> ：像网络模块一样，我们包装了其余的现有原生基础设施，例如国际化，实验等，以便能够在 React Native 上无缝运行。</li>
+</ol>
+<h4 id="静态分析"><a href="#静态分析" class="headerlink" title="静态分析"></a>静态分析</h4><p>在 web 开发中，我们有着<a href="https://github.com/airbnb/javascript" target="_blank" rel="noopener">悠久的使用 eslint 的历史</a>，本可以利用这一点，但我们又是 Airbnb 内部第一个推行 <a href="https://github.com/prettier/prettier" target="_blank" rel="noopener">prettier</a> 的平台。使用 prettier 可以有效的减少处理 PR 时的 nits（ = nit-pick = 吹毛求疵的的小变动 = Small change that may not be very important, but is technically correct ）和自行车棚效应。我们的 web 基础框架团队正在积极的调研 prettier。</p>
+<p>我们还使用 analytics（分析）来计算渲染时间和性能，用来指出性能问题中，对哪些界面进行优先排查。</p>
+<p>由于 React Native 比我们的 web 框架更加新，且体量更小，十分适合用来做新想法的试验台。很多我们使用 React Native 创立起来的工具和想法，现在都在用 web 来发展壮大。</p>
+<h4 id="动效"><a href="#动效" class="headerlink" title="动效"></a>动效</h4><p>多亏了 React Native 的 <a href="https://facebook.github.io/react-native/docs/animated.html" target="_blank" rel="noopener">Animated</a> 库，我们得以实现无抖动的动效，甚至能够实现例如滚动视差（scrolling parallax）这样的，交互驱动的动效。</p>
+<h4 id="弹性盒子（flexbox）"><a href="#弹性盒子（flexbox）" class="headerlink" title="弹性盒子（flexbox）"></a>弹性盒子（flexbox）</h4><p>React Native 使用 <a href="https://github.com/facebook/yoga" target="_blank" rel="noopener">Yoga</a> 处理布局，Yoga 是一个跨平台的 C 语言库，用来处理经由 <a href="https://www.w3schools.com/css/css3_flexbox.asp" target="_blank" rel="noopener">flexbox</a> API 生成的布局计算。前段时间，我们触到了 Yoga 的盲区，比如缺少宽高比，不过已经在后去的迭代中更新了。另外，例如像 <a href="https://flexboxfroggy.com/" target="_blank" rel="noopener">flexbox froggy</a> 这样有趣的教程，让入门更加享受。</p>
+<h4 id="跟-Web-的协作"><a href="#跟-Web-的协作" class="headerlink" title="跟 Web 的协作"></a>跟 Web 的协作</h4><p>在 React Native 后期的探索中，我们开始一次性构建 web，iOS 和 Android 三个平台的应用。鉴于 web 端也使用了 Redux，我们发现大量的代码是可以同时在 web 和原生平台上使用的，不需要更改。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><h4 id="React-Native-不够成熟"><a href="#React-Native-不够成熟" class="headerlink" title="React Native 不够成熟"></a>React Native 不够成熟</h4><p>React Native 跟 Android 和 iOS 平台相比，依旧不够成熟。React Native 更加年轻，雄心勃勃，且迭代更新很迅速。<br>虽然说 React Native 在大多数情况下表现的都很好，依旧有部分情况下，React Native 的不成熟就体现出来了，使得本来在原生上实现起来微不足道的东西变得很困难。不幸的是，这类的情况很难预测，要花费上几小时到几天不等的时间来解决。</p>
+<h4 id="维护-React-Native-的分支"><a href="#维护-React-Native-的分支" class="headerlink" title="维护 React Native 的分支"></a>维护 React Native 的分支</h4><p>由于 React Native 的不成熟，有很多次我们需要给 React Native 的源代码打补丁。除了参与 React Native 的贡献外，我们还必须维护一个<a href="https://github.com/airbnb/react-native/commits/0.46-canary" target="_blank" rel="noopener">分支</a>，用来快速的合并变动和突破我们的版本。在两年中，我们在 React Native 上提交了大概50个 commits。这使更新 React Native 的过程太痛苦了。</p>
+<h4 id="JavaScript-工具"><a href="#JavaScript-工具" class="headerlink" title="JavaScript 工具"></a>JavaScript 工具</h4><p>JavaScript 是弱类型语言。类型安全性的缺乏不仅让扩展变得困难，同时也成为了有兴趣学习 React Native 但习惯了强类型语言的移动工程师讨论的焦点。我们调研了<a href="https://flow.org/" target="_blank" rel="noopener">流程</a>，但令人费解的错误提示导致了很糟糕的开发体验。我们还调研了 <a href="http://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript</a>，但是发现把它集成进我们现有的框架中非常困难，例如 <a href="https://babeljs.io/" target="_blank" rel="noopener">babel</a> 和 <a href="https://github.com/facebook/metro" target="_blank" rel="noopener">metro bundler</a>。不过，我们持续的在 web 端积极调研 TypeScript。</p>
+<h4 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h4><p>弱类型语言 JavaScript 带来的一个副作用是重构很困难还容易出错。重命名属性，尤其是有着通用名字的属性，比如 onClick 这种，或者是通过多个组件传递的属性，重构起来就是噩梦。更糟糕的是，重构是在在生产环境中断，而不是在编译时，这就很难去增加属性的静态分析。</p>
+<h4 id="JavaScript-内核的不一致"><a href="#JavaScript-内核的不一致" class="headerlink" title="JavaScript 内核的不一致"></a>JavaScript 内核的不一致</h4><p>React Native 比较微妙和棘手的方面在于它是在 JavaScript 内核的环境中执行的。以下是我们遇到的情况的总结结果：</p>
+<ul>
+<li>iOS 环境中运行会使用平台自己的 <a href="https://developer.apple.com/documentation/javascriptcore" target="_blank" rel="noopener">JavaScript 内核</a>。这意味着 iOS 一如既往的不会给我们添麻烦。</li>
+<li>Android 并不会使用它自己的 JavaScript 内核，所以 React Native 捆绑了自己的。然而默认情况下你拿到的是<a href="https://github.com/facebook/react-native/issues/10245" target="_blank" rel="noopener">古老的版本</a>，因此，我们需要自己动手捆绑一个<a href="https://github.com/react-community/jsc-android-buildscripts" target="_blank" rel="noopener">新的</a>。</li>
+<li>调试的时候，React Native 附带了一个 Chrome 的开发者工具。这点很棒，Chrome 开发者工具是一个非常强大的调试工具。但是一旦接入了这个调试工具，所有的 JavaScript 代码就跑在了 Chrome 的 V8 引擎上了。这在 99.99%的情况下是 OK 的，但在我们遇到了这么一种情况，toLocalString 在 iOS 环境下很正常，但是在 Android 上只有调试状态下才工作。这说明 Android 的 JavaScript 内核<a href="https://github.com/facebook/react-native/issues/15717" target="_blank" rel="noopener">不包含 toLocalString</a>，它就默默的失败了，除非你在调试，但这种情况下它使用的又是 V8 引擎。<strong>如果不知道这样的技术细节，带给工程师们的会是几天痛苦的调试过程。</strong></li>
+</ul>
+<h4 id="React-Native-开源库"><a href="#React-Native-开源库" class="headerlink" title="React Native 开源库"></a>React Native 开源库</h4><p>学习一个平台是困难且耗时的。大多数的人只熟悉1-2个平台。React Native 库包含对原生的桥接，例如地图，视频等，这需要三个平台等量的知识才能自如的运用。我们发现大多数的 React Native 开源项目是由只有一个或两个平台经验的人编写的。这会导致在 Android 和 iOS 平台上出现表现不一致和意外的 bug。</p>
+<p>在 Android 平台，很多 React Native 库依旧要求你对 node_modules 使用相对路径，而不是发布与社区期待不一致的 maven artifacts。</p>
+<h4 id="并行的基础架构和产品功能性工作"><a href="#并行的基础架构和产品功能性工作" class="headerlink" title="并行的基础架构和产品功能性工作"></a>并行的基础架构和产品功能性工作</h4><p>我们积攒了很多年的 Android 和 iOS 平台的原生基础设施。然而在 React Native 方面，是从零开始为已有的基础设施编写或者创造桥接。这意味着发生过很多次产品工程师需要一些还不存在的功能的情况。基于此，工程师们要么需要在他们不熟悉的平台上干活，在他们的项目之外进行构建，要么被卡住等到有人创建这个功能。</p>
+<h4 id="崩溃监控"><a href="#崩溃监控" class="headerlink" title="崩溃监控"></a>崩溃监控</h4><p>在 Android 和 iOS 平台上，我们使用 <a href="https://www.bugsnag.com/" target="_blank" rel="noopener">Bugsnag</a>来上报崩溃。虽然能让 Bugsnag 在两个平台上都正常工作，但它可靠性较低，而且跟在我们其他的平台上相比，工作量也要更大。因为 React Native 在行业内是较新的框架且相对比较少见，我们不得不建立大量的例如 ‘在内部上传 source maps’ 这样的基础设施，而且还要与 Bugsnag 合作来做到一些类似 ’过滤出仅在 React Native 中发生的崩溃‘ 这样的事情。</p>
+<p>鉴于围绕 React Native 的定制基础设施的数量，我们偶尔遇到一些严重的问题，但没有上报崩溃或者 source map 没有上传。</p>
+<p>最后，如果问题跨域 React Native 和原生两部分的代码，调试 React Native 崩溃就非常有挑战性了，因为堆栈跟踪不会在 React Native 和原生之间跳转。</p>
+<h4 id="原生桥接"><a href="#原生桥接" class="headerlink" title="原生桥接"></a>原生桥接</h4><p>React Native 自带<a href="https://facebook.github.io/react-native/docs/communication-ios.html" target="_blank" rel="noopener">桥接的 API</a>，以便在原生和 React Native 之间通信。虽说它能够正常的工作，但是编写起来还是极其麻烦的。首先，它需要三种开发环境才能正确的建立好。我们还遇到了些来自于 JavaScript，出乎意料的类型问题。举个栗子，整数常常被字符串包裹，这个问题直到它要通过桥接时才被发现。更加糟糕的是，有时 iOS 会默默地失败，但 Android 会崩溃。我们开始研究用 TypeScript 的定义来自动生成桥接代码直到2017年底，但是量太少也太晚了。</p>
+<h4 id="初始化时间"><a href="#初始化时间" class="headerlink" title="初始化时间"></a>初始化时间</h4><p>在 React Native 能开始初次渲染之前，必须初始化它的进行时。不幸的是，对我们的 app 的体积来说，需要几秒钟，这还是在高端机上。这让使用 React Native 来启动页面几乎不太可能。我们在 app 启动时就初始化React Native，来尽可能压缩它的首次渲染时间。</p>
+<h4 id="初始渲染时间"><a href="#初始渲染时间" class="headerlink" title="初始渲染时间"></a>初始渲染时间</h4><p>与原生界面不同的是，在有足够的信息首次渲染界面前，渲染 React Native 至少需要一个完整的主线程 -&gt; js -&gt; yoga 布局线程 -&gt; 主线程的闭环。我们可以看到在 iOS 上平均初始 90% 渲染要 280 毫秒，Android 上要 440 毫秒。在安卓上，我们使用通常用于共享元素转换的 <a href="https://developer.android.com/reference/android/app/Activity.html#postponeEnterTransition%28%29" target="_blank" rel="noopener">postponeEnterTransition</a> API 来实现延迟显示界面直到渲染完成。在 iOS 上我们遇到了从 React Native 快速设置导航栏配置不够快速的问题。因此，我们对所有的 React Native 界面过渡加上了50毫秒的仿真延迟，以防止配置加载后导航栏出现闪烁。</p>
+<h4 id="App-的大小"><a href="#App-的大小" class="headerlink" title="App 的大小"></a>App 的大小</h4><p>React Native 对 app 大小也有这不可忽视的影响。在 Android 上，React Native 的总大小（Java + JS + 原生库，比如Yoga + Javascript 运行时）达到了 8MB 每个 ABI。在一个 APK 中使用 x86 和 arm（仅 32 位），体积达到了接近 12MB。</p>
+<h4 id="64位"><a href="#64位" class="headerlink" title="64位"></a>64位</h4><p>因为<a href="https://github.com/facebook/react-native/issues/2814" target="_blank" rel="noopener">这个问题</a>，我们仍然不能在 Android 上安装一个 64 位的 APK。</p>
+<h4 id="手势"><a href="#手势" class="headerlink" title="手势"></a>手势</h4><p>我们避免在涉及到有复杂手势操作的界面上使用 React Native，因为 Android 和 iOS 的触摸子系统完全不一样，整理出一套统一的 API 对于整个 React Native 社区都是一个挑战。但这项工作还在持续进行，<a href="https://github.com/kmagiera/react-native-gesture-handler" target="_blank" rel="noopener">react-native-gesture-handler</a> 刚刚发布了1.0版本。</p>
+<h4 id="过长的-list"><a href="#过长的-list" class="headerlink" title="过长的 list"></a>过长的 list</h4><p>React Native 在这方面取得了一些进展，比如 <a href="https://facebook.github.io/react-native/docs/flatlist.html" target="_blank" rel="noopener">FlatList</a> 这样的库。但成熟度和灵活性还是远不及 Android 上的 <a href="https://developer.android.com/guide/topics/ui/layout/recyclerview" target="_blank" rel="noopener">RecyclerView</a> 和 iOS 上的 <a href="https://developer.apple.com/documentation/uikit/uicollectionview" target="_blank" rel="noopener">UICollectionView</a>。由于线程问题，很多限制很难突破。适配数据无法同步访问，会导致视图闪烁，因为在快速滚动的时候进行的是异步渲染。文本也无法做到同步测算，所以 iOS 无法使用预先计算的 cell 高度来做某些优化。</p>
+<h4 id="升级-React-Native"><a href="#升级-React-Native" class="headerlink" title="升级 React Native"></a>升级 React Native</h4><p>虽然大多数的 React Native 升级都很微不足道，但还是有一些让人非常痛苦。尤其是 React Native 0.43（2017年4月）至 React Native 0.49（2017年10月）版本几乎无法使用，因为其中使用了 React 16 alpha 和 beta。这是个很严重的问题，因为大多数专为 web 设计的 React 库不支持以前的 React 版本。争论此次升级适当依赖关系的过程，对2017年中其他的 React Native 基础架构工作造成了重大损害。</p>
+<h4 id="辅助功能"><a href="#辅助功能" class="headerlink" title="辅助功能"></a>辅助功能</h4><p>2017年，我们进行了一次<a href="https://airbnb.design/designing-for-access/" target="_blank" rel="noopener">辅助功能的彻底检修</a>，在这其中投入了大量的精力，以保证残障人士可以使用 Airbnb 预定到满足他们使用需要的房源。但是 React Native 的辅助功能 API 有着许多漏洞。为了满足最小可接受程度的辅助功能条，我们必须维护<a href="https://github.com/airbnb/react-native/commits/0.46-canary" target="_blank" rel="noopener">一个自己的用于合并修复的 React Native 分支</a>。对于这些情况，Android 或 iOS 上的一个一行的修复，需要数天时间才能确定如何将其添加到 React Native，然后 cherry pick 它，在 React Native Core 上提交 issue，然后接下来的几周跟踪这个问题。</p>
+<h4 id="麻烦的崩溃"><a href="#麻烦的崩溃" class="headerlink" title="麻烦的崩溃"></a>麻烦的崩溃</h4><p>我们还不得不处理一些很难解决的奇葩的崩溃。举个栗子，我们最近在这个注释下遇到了<a href="https://issuetracker.google.com/issues/37045084" target="_blank" rel="noopener">这个崩溃</a>，且无法在任何设备上复现，即便是那些跟一直崩溃的设备具有相同硬件和软件的也是如此。</p>
+<h4 id="Android-上的-SavedInstanceState-跨进程"><a href="#Android-上的-SavedInstanceState-跨进程" class="headerlink" title="Android 上的 SavedInstanceState 跨进程"></a>Android 上的 SavedInstanceState 跨进程</h4><p>Android 会经常去清理后台进程，但给了他们一个<a href="https://developer.android.com/topic/libraries/architecture/saving-states#use_onsaveinstancestate_as_backup_to_handle_system_initiated_process_death" target="_blank" rel="noopener">把状态同步保存进 bundle 的机会
+</a>。但在 React Native 上，所有的状态都在 js 线程中访问，无法同步进行。即便状况不是这样，存储状态的 redux 也与这种方式不兼容，因为它包含的是可序列化数据和不可序列化数据的混合，而且还包括了超出适用于 savedInstanceState 中的数据，这会导致在生产环境中的崩溃。</p>
+<hr>
+<p>这是系列博客文章的第二部分，重点讲述了我们使用 React Native 的经验，以及 Airbnb 在移动端接下来要做的事情。</p>
+<ul>
+<li>第一弹：在 Airbnb 使用 React Native <a href="https://rebeccahanjw.github.io/2018/06/21/Airbnb%20%E7%9A%84%20React%20Native%20%E7%BB%8F%E9%AA%8C/" target="_blank" rel="noopener">（译文）</a></li>
+<li>第二弹：技术</li>
+<li>第三弹：组建一个跨平台移动端团队 <a href="https://rebeccahanjw.github.io/2018/06/26/%E7%BB%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%9B%A2%E9%98%9F%EF%BC%88%E8%AF%91%EF%BC%89/" target="_blank" rel="noopener">（译文）</a></li>
+<li>第四弹：在 React Native 方面做个决定 （翻译中…）</li>
+<li>第五弹：在移动端接下来要做的事情 （翻译中…）</li>
+</ul>
+<hr>
+<h6 id="翻译：Rebecca-Han"><a href="#翻译：Rebecca-Han" class="headerlink" title="翻译：Rebecca Han"></a>翻译：Rebecca Han</h6><h6 id="译自-Gabriel-Peal（Airbnb-工程师）-发表在-Medium-上的文章。"><a href="#译自-Gabriel-Peal（Airbnb-工程师）-发表在-Medium-上的文章。" class="headerlink" title="译自 Gabriel Peal（Airbnb 工程师） 发表在 Medium 上的文章。"></a>译自 Gabriel Peal（Airbnb 工程师） 发表在 Medium 上的文章。</h6><h6 id="原文链接：-https-medium-com-airbnb-engineering-react-native-at-airbnb-the-technology-dafd0b43838"><a href="#原文链接：-https-medium-com-airbnb-engineering-react-native-at-airbnb-the-technology-dafd0b43838" class="headerlink" title="原文链接： [https://medium.com/airbnb-engineering/react-native-at-airbnb-the-technology-dafd0b43838)"></a>原文链接： [<a href="https://medium.com/airbnb-engineering/react-native-at-airbnb-the-technology-dafd0b43838" target="_blank" rel="noopener">https://medium.com/airbnb-engineering/react-native-at-airbnb-the-technology-dafd0b43838</a>)</h6>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/20/Airbnb 的 React Native 经验：技术 （译）/" data-id="cjk3edcho000143937ovmb8hf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/26/组建一个跨平台移动端团队（译）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">组建一个跨平台移动端团队（译）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/20/Airbnb 的 React Native 经验：技术 （译）/">Airbnb 的 React Native 经验：技术 （译）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/26/组建一个跨平台移动端团队（译）/">组建一个跨平台移动端团队（译）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/25/Airbnb 的 React Native 经验/">Airbnb 的 React Native 经验(译)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/06/Alfred-平台的知乎搜索-workflow/">Alfred 平台的知乎搜索 workflow</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/08/并列 inline-block 元素间隙问题/">并列 inline-block 元素间隙问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Rebecca Han<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"> </script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
