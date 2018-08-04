@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Airbnb 的 React Native 经验：放弃 React Native （译） | PETRICHOR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文使用 Sunsetting React Native, 语气感觉没有‘放弃’那么重的负面语义，大致就是逐步停止使用的意思。由于技术和组织方面的一系列原因，我们准备放弃使用 React Native ，并致力于让原生体验更优异。  这是 Airbnb 使用 React Native 的经验以及下一步在移动端做些什么的系列博文第四篇。今天，我们身处何方？ 尽管有很多团队依赖于 React Nati">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Airbnb 的 React Native 经验：放弃 React Native （译）">
+<meta property="og:url" content="http://yoursite.com/2018/08/02/Airbnb 的 React Native 经验：放弃 React Native （译）/index.html">
+<meta property="og:site_name" content="PETRICHOR">
+<meta property="og:description" content="原文使用 Sunsetting React Native, 语气感觉没有‘放弃’那么重的负面语义，大致就是逐步停止使用的意思。由于技术和组织方面的一系列原因，我们准备放弃使用 React Native ，并致力于让原生体验更优异。  这是 Airbnb 使用 React Native 的经验以及下一步在移动端做些什么的系列博文第四篇。今天，我们身处何方？ 尽管有很多团队依赖于 React Nati">
+<meta property="og:locale" content="Chinese English">
+<meta property="og:image" content="http://yoursite.com/2018/08/02/Airbnb%20的%20React%20Native%20经验：放弃%20React%20Native%20（译）/images/15326918987390.jpg">
+<meta property="og:updated_time" content="2018-08-04T02:29:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Airbnb 的 React Native 经验：放弃 React Native （译）">
+<meta name="twitter:description" content="原文使用 Sunsetting React Native, 语气感觉没有‘放弃’那么重的负面语义，大致就是逐步停止使用的意思。由于技术和组织方面的一系列原因，我们准备放弃使用 React Native ，并致力于让原生体验更优异。  这是 Airbnb 使用 React Native 的经验以及下一步在移动端做些什么的系列博文第四篇。今天，我们身处何方？ 尽管有很多团队依赖于 React Nati">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/02/Airbnb%20的%20React%20Native%20经验：放弃%20React%20Native%20（译）/images/15326918987390.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="PETRICHOR" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">PETRICHOR</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A Girl &amp; A Luftmensch</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Airbnb 的 React Native 经验：放弃 React Native （译）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/02/Airbnb 的 React Native 经验：放弃 React Native （译）/" class="article-date">
+  <time datetime="2018-08-02T02:15:30.000Z" itemprop="datePublished">2018-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Airbnb 的 React Native 经验：放弃 React Native （译）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="原文使用-Sunsetting-React-Native-语气感觉没有‘放弃’那么重的负面语义，大致就是逐步停止使用的意思。"><a href="#原文使用-Sunsetting-React-Native-语气感觉没有‘放弃’那么重的负面语义，大致就是逐步停止使用的意思。" class="headerlink" title="原文使用 Sunsetting React Native, 语气感觉没有‘放弃’那么重的负面语义，大致就是逐步停止使用的意思。"></a>原文使用 Sunsetting React Native, 语气感觉没有‘放弃’那么重的负面语义，大致就是逐步停止使用的意思。</h6><p>由于技术和组织方面的一系列原因，我们准备放弃使用 React Native ，并致力于让原生体验更优异。</p>
+<p><img src="./images/15326918987390.jpg" alt=""></p>
+<p>这是 Airbnb 使用 React Native 的经验以及下一步在移动端做些什么的<a href="https://medium.com/airbnb-engineering/react-native-at-airbnb-f95aa460be1c" target="_blank" rel="noopener">系列博文</a>第四篇。今天，我们身处何方？</p>
+<p>尽管有很多团队依赖于 React Native ，并计划在可预见的未来使用它，但我们最终没有达到当初的目标。另外，还遇见了很多<a href="https://rebeccahanjw.github.io/2018/07/20/Airbnb%20%E7%9A%84%20React%20Native%20%E7%BB%8F%E9%AA%8C%EF%BC%9A%E6%8A%80%E6%9C%AF%20%EF%BC%88%E8%AF%91%EF%BC%89/" target="_blank" rel="noopener">技术上</a>和<a href="https://rebeccahanjw.github.io/2018/06/26/%E7%BB%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%9B%A2%E9%98%9F%EF%BC%88%E8%AF%91%EF%BC%89/" target="_blank" rel="noopener">组织上</a>的无法克服的挑战，使技术投入 React Native 变得十分困难。</p>
+<p>因此, 要奋勇向前，我们决定在 Airbnb 停止使用 React Native ，重新把我们所有的精力投入原生开发。</p>
+<h4 id="未能达到我们的目标"><a href="#未能达到我们的目标" class="headerlink" title="未能达到我们的目标"></a>未能达到我们的目标</h4><h4 id="迭代更迅速"><a href="#迭代更迅速" class="headerlink" title="迭代更迅速"></a>迭代更迅速</h4><p>在 React Native 能够如预期工作时，工程师们能维持一个相当快的迭代速度。然而，本系列里提到的许多<a href="https://rebeccahanjw.github.io/2018/07/20/Airbnb%20%E7%9A%84%20React%20Native%20%E7%BB%8F%E9%AA%8C%EF%BC%9A%E6%8A%80%E6%9C%AF%20%EF%BC%88%E8%AF%91%EF%BC%89/" target="_blank" rel="noopener">技术上</a>和<a href="https://rebeccahanjw.github.io/2018/06/26/%E7%BB%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%9B%A2%E9%98%9F%EF%BC%88%E8%AF%91%EF%BC%89/" target="_blank" rel="noopener">组织上</a>的问题，增加了很多项目里的挫败和意外的耽搁时间。</p>
+<h4 id="保持质量标准"><a href="#保持质量标准" class="headerlink" title="保持质量标准"></a>保持质量标准</h4><p>近期，随着 React Native 的逐渐成熟，我们也累积了不少的专业知识，我么已经能够完成不少当初不确定能够做到的事情。我们构建了共享元素转换，(滚动)视差，并戏剧性的提高了一些过去经常丢帧的屏幕的性能。但是，例如初始化和异步首次渲染这样的<a href="https://medium.com/airbnb-engineering/react-native-at-airbnb-the-technology-dafd0b43838" target="_blank" rel="noopener">技术挑战</a>，想要达到既定目标的话是非常具有挑战性的。内部与外部资源的缺乏导致这更加困难。</p>
+<h4 id="只编写一次代码而不是两次"><a href="#只编写一次代码而不是两次" class="headerlink" title="只编写一次代码而不是两次"></a>只编写一次代码而不是两次</h4><p>即便 React Native 的代码特性几乎是可以跨平台的，我们仍只是在非常少一部分的 app 上使用 React Native。此外，为了让工程师能够有效地工作，还需要大量的桥接基础架构。因此，我们最终是在三个平台上支持代码，而非两个平台。我们看到了在移动端和 web 端共享代码的潜力，也能够共享一些 npm 包，但除此之外，再没有以有意义的方式实现了。</p>
+<h4 id="提升开发者体验"><a href="#提升开发者体验" class="headerlink" title="提升开发者体验"></a>提升开发者体验</h4><p>开发者们使用 React Native 的开发体验各有不同。从某些角度来讲，比如构建时间上，体验就要好得多。然而在其他方面，例如调试，情况就非常糟糕了。这些细节在本系列的<a href="https://rebeccahanjw.github.io/2018/07/20/Airbnb%20%E7%9A%84%20React%20Native%20%E7%BB%8F%E9%AA%8C%EF%BC%9A%E6%8A%80%E6%9C%AF%20%EF%BC%88%E8%AF%91%EF%BC%89/" target="_blank" rel="noopener">第二部分</a>中有讲到。</p>
+<h4 id="停止使用的计划"><a href="#停止使用的计划" class="headerlink" title="停止使用的计划"></a>停止使用的计划</h4><p>由于我们无法达到我们的特定目标，我们做了个决定，就是 React Native 不在适合我们了。目前，我们在和团队一起制定一个合适的过渡计划。我们已经停止了 React Native 新特性的使用，并且计划年底前将大多数访问量高的页面换成原生编写。这得益于一些已经敲定好了的重新设计计划。我们的原生框架团队将在2018年继续支持 React Native。在2019年，将开始逐步减少支持并降低 React Native 的开销，例如启动时的初始化运行时。</p>
+<p>在 Airbnb，我们是开源的坚定支持者。我们积极地使用和贡献很多世界各地的开源项目，并开源一些我们的 React Native 相关的工作。鉴于我们开始不再使用 React Native ，我们没办法像社区一样去维护 React Native。为了让社区变得更好，我们准备将一些 React Native 相关的开源工作转移到  <a href="https://github.com/react-native-community" target="_blank" rel="noopener">react-native-community</a>，我们已经开始使用 <a href="https://github.com/react-community/react-native-maps" target="_blank" rel="noopener">react-native-maps</a>，且将会使用 <a href="https://github.com/airbnb/native-navigation" target="_blank" rel="noopener">native-navigation</a> 和 <a href="https://github.com/airbnb/lottie-react-native/" target="_blank" rel="noopener">lottie-react-native</a>。</p>
+<h4 id="这并非全是坏事"><a href="#这并非全是坏事" class="headerlink" title="这并非全是坏事"></a>这并非全是坏事</h4><p>尽管我们无法使用 React Native 达到目标，但使用 React Native 的工程十分还是有一些不错的体验。这些工程师中：</p>
+<ul>
+<li>60%的人认为他们的体验是绝佳的</li>
+<li>有20%认为还不错</li>
+<li>15%认为不太好</li>
+<li>5%的人认为非常糟糕</li>
+</ul>
+<p>有63%的工程师表示有机会的话会再次选择 React Native，74%的人会考虑使用 React Native 开发新项目。不过值得注意的是，这个结果是存在固有的选择性偏差的，因为接受调查的人都是选择过 React Native 的人。</p>
+<h4 id="React-Native-在走向成熟"><a href="#React-Native-在走向成熟" class="headerlink" title="React Native 在走向成熟"></a>React Native 在走向成熟</h4><p>这一系列的文章真实地反映了我们现阶段使用 React Native 的经验。然而，Facebook 和更开放的 React Native 社区致力于让 React Native 在混合应用上成规模使用。React Native 在以前所未有的规模发展。去年有超过 2500 个 commit，Facebook <a href="https://facebook.github.io/react-native/blog/2018/06/14/state-of-react-native-2018" target="_blank" rel="noopener">刚刚宣布</a>他们正在解决我们正面临的一些技术挑战。即便我们不在继续使用 React Native，我们仍然很高兴可以继续关注这些进展，因为 React Native 的技术优势转化成了为真实世界的我们的用户提供的便利。</p>
+<h4 id="小贴士"><a href="#小贴士" class="headerlink" title="小贴士"></a>小贴士</h4><p>我们将 React Native 集成在一些现有的大型项目中，并以非常快的速度迭代。我们遇到的很多困难都是由于我们使用了混合模型方法。然而，我们的规模容许我们去解决一些小公司没有时间解决的难题。想让 React Native 跟原生一起无缝合作是可以做到的，但是非常具有挑战性。每个使用 React Native 的公司由于他们的团队组成、现有应用、产品需求和 React Native 成熟度不用而有不同的独特的感受。</p>
+<p>当这一切结合在一起时，就对许多特性都起了作用，迭代速度，质量，开发体验能够匹配甚至超越了我们的目标和期望。这时候，我们真的感觉像要是接近于改变移动开发的游戏规则了。尽管这些体验很振奋人心，但当我们权衡这些优点和痛点，以及当前的需求和工程组织的资源的时候，我们还是决定它不再适合我们了。</p>
+<p>决定使用一个新平台与否，是一个主观的决定，它取决于你团队独有的一些因素。我们的经验和放弃的理由不一定适合你的团队。事实上，<a href="https://medium.com/@Pinterest_Engineering/supporting-react-native-at-pinterest-f8c2233f90e6" target="_blank" rel="noopener"> _很多_</a><a href="https://instagram-engineering.com/react-native-at-instagram-dd828a9a90c7" target="_blank" rel="noopener"> _公司_</a>现在还在继续成功地使用 React Native，对其他的一些公司来说，React Native 仍然可能是最好的选择。</p>
+<p>尽管我们从未放弃过使用原生，但停止使用 React Native 后可以释放出更多的资源来把原生优化的更好。跟我们一起进入本系列的<a href="https://medium.com/airbnb-engineering/whats-next-for-mobile-at-airbnb-5e71618576ab" target="_blank" rel="noopener">下一部分</a>，来学习一下我们在原生方面要做的新的事情。</p>
+<hr>
+<p>这是本系列博文的第四篇，主要讲述了我们在 React Native 方面的经验以及下一步在移动端要做的事情。</p>
+<ul>
+<li>第一弹：在 Airbnb 使用 React Native <a href="https://rebeccahanjw.github.io/2018/06/21/Airbnb%20%E7%9A%84%20React%20Native%20%E7%BB%8F%E9%AA%8C/" target="_blank" rel="noopener">（译文）</a></li>
+<li>第二弹：技术 <a href="https://rebeccahanjw.github.io/2018/07/20/Airbnb%20%E7%9A%84%20React%20Native%20%E7%BB%8F%E9%AA%8C%EF%BC%9A%E6%8A%80%E6%9C%AF%20%EF%BC%88%E8%AF%91%EF%BC%89/" target="_blank" rel="noopener">（译文）</a></li>
+<li>第三弹：组建一个跨平台移动端团队 <a href="https://rebeccahanjw.github.io/2018/06/26/%E7%BB%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%9B%A2%E9%98%9F%EF%BC%88%E8%AF%91%EF%BC%89/" target="_blank" rel="noopener">（译文）</a></li>
+<li>第四弹：在 React Native 方面做个决定 （翻译中…）</li>
+<li>第五弹：在移动端接下来要做的事情 （翻译中…）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/02/Airbnb 的 React Native 经验：放弃 React Native （译）/" data-id="cjkesvdm40001p993r0s2qgu4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/20/Airbnb 的 React Native 经验：技术 （译）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Airbnb 的 React Native 经验：技术 （译）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/02/Airbnb 的 React Native 经验：放弃 React Native （译）/">Airbnb 的 React Native 经验：放弃 React Native （译）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/20/Airbnb 的 React Native 经验：技术 （译）/">Airbnb 的 React Native 经验：技术 （译）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/26/组建一个跨平台移动端团队（译）/">组建一个跨平台移动端团队（译）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/25/Airbnb 的 React Native 经验/">Airbnb 的 React Native 经验(译)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/06/Alfred-平台的知乎搜索-workflow/">Alfred 平台的知乎搜索 workflow</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Rebecca Han<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"> </script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
